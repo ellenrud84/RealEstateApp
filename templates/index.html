@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <!-- define header -->
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Real Estate Neighborhood Investing Tool</title>
+    <!-- leaflet JS & CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <!-- our CSS -->
+    <link rel="stylesheet" href="static/css/style.css"/>
+
+    <!-- Bring in our bootstrap stylesheet -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+
+    
+  </head>
+  <!-- define body -->
+  <body>
+    <div class= "wrapper">
+
+        <div id="mySidebar" class="sidebar">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        </div>
+  
+        <nav  class="sidebar" id="mainSidebar">
+            <div class= "form-group">
+                <ul class= "list-unstyled sidenav a" >
+                    
+                    <li> 
+                        <h6 class = "form-text">Max. Budget</h6>
+                        <div  id="budgetFilter" class="d-flex justify-content-center my-4">
+                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                            <form class="range-field w-50">
+                              <input class="border-0" type="range" min="0" max="1000000" />
+                            </form>
+                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">1MM</span>
+                        </div>
+                    </li>
+                    <li> 
+                        <h6 class = "form-text"><strong>Relative Importance</strong></h6>
+                        <div class = "dropdown-divider"></div>
+                    </li>
+                    <li>
+                        <h6>Average School Rating</h6>
+                        <div class="d-flex justify-content-center my-4">
+                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                            <form class="range-field w-50">
+                              <input class="border-0" type="range" min="0" max="10" />
+                            </form>
+                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
+                          </div>
+                    </li>
+                    <li> 
+                        <h6>Elementary School Rating</h6>
+                        <div class="d-flex justify-content-center my-4">
+                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                            <form class="range-field w-50">
+                              <input class="border-0" type="range" min="0" max="10" />
+                            </form>
+                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
+                          </div>
+                    </li>
+                    <li>
+                        <h6>
+                            Middle School Rating
+                        </h6>
+                        <div class="d-flex justify-content-center my-4">
+                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                            <form class="range-field w-50">
+                              <input class="border-0" type="range" min="0" max="10" />
+                            </form>
+                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
+                          </div>
+                      
+                    </li>
+
+                    <li>
+                        <h6>
+                            High School Rating
+                        </h6>
+                        <div class="d-flex justify-content-center my-4">
+                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                            <form class="range-field w-50">
+                              <input class="border-0" type="range" min="0" max="10" />
+                            </form>
+                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
+                          </div>
+                      
+                    </li>
+
+                    <li>
+                        <h6>
+                            Crime Risk
+                        </h6>
+                        <div class="d-flex justify-content-center my-4">
+                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                            <form class="range-field w-50">
+                              <input class="border-0" type="range" min="0" max="10" />
+                            </form>
+                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
+                          </div>
+        
+                    </li>
+
+                    <li>
+                        <h6>
+                            Flood Risk
+                        </h6>
+                        <div class="d-flex justify-content-center my-4">
+                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                            <form class="range-field w-50">
+                              <input class="border-0" type="range" min="0" max="10" />
+                            </form>
+                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
+                          </div>
+                        
+                    </li>
+
+                    <li>
+                        <h6>Y/Y Value % Increase</h6>
+                        <div class="d-flex justify-content-center my-4">
+                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                            <form class="range-field w-50">
+                              <input class="border-0" type="range" min="0" max="10" />
+                            </form>
+                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
+                          </div>
+                        
+                    </li>
+                </ul>
+                <h6 class = "button btn">Submit</h6>
+            </div>
+        </nav>
+
+        <div class = "main">
+            <!-- start of nav bar -->
+            <nav class ="navbar navbar-expand-lg fixed-top navbar-dark bg-success">
+                <!-- container for nav bar content -->
+                <div class= "container-fluid">
+                    <a href="index.html" class="navbar-brand mr-auto">Real Estate Investment Tool</a>
+                    <!-- button to show or hide nav items?? -->
+                    <button class= "navbar-toggler" type="button" data-toggle="collapse" 
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class= "navbar-toggler-icon"></span>
+                    </button>
+                    <!-- $('.dropdown-toggle').dropdown() -->
+                    <div class= "collapse navbar-collapse" id="navbarResponsive">
+                        <ul class= "navbar-nav ml-auto">
+                            <!-- Plots drop down item in navbar -->
+                            <li class="nav-item dropdown"> 
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Plots
+                                <span class="rt_caret"></span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="themes">
+                                <a class="dropdown-item" href="index.html">Home/ Inputs</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Top 5 Neighborhoods</a>
+                                <a class="dropdown-item" href="#">Page 2</a>
+                                <a class="dropdown-item" href="#">Page 3</a>
+                            </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Dropdown2
+                                </a>
+                                <span class="rt_caret"></span>
+                                <div class="dropdown-menu" aria-labelledby="themes">
+                                <a class="dropdown-item" href="index.html">Home/Inputs</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Other Page</a>
+                                <a class="dropdown-item" href="#l">Other Page</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Data</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!--finished with navbar onto page header  -->
+    <div class= "main-index">
+        <div class = "row">
+          <div class= "col-lg-12">  
+            <div class="page-header" >
+              <h1>Neighborhoods Currently Included</h1>  
+            </div>
+          </div>
+        </div>
+        <div id="mapMain"></div>
+        <br>
+        <div id= "mapFocused"></div>
+        <br>
+        <div id= "bar1"></div>
+        <br>
+        <div id = "ibar"></div>
+        <br>
+        <div id = "iMap"></div>
+    </div>
+
+    <!-- footer elements -->
+
+    <!-- footer: ref https://mdbootstrap.com/docs/jquery/navigation/footer/#sticky-footer -->
+    
+    <footer class = "page-footer font-small fixed-bottom navbar-expand-lg" style="color:white; background-color: #212121;">
+
+        <!-- footer elements -->
+        <div class= "container">
+        
+            <div class = "row">
+                <!-- social buttons -->
+                <ul class="list-unstyled list-inline text-center">
+
+                <li class="list-inline-item">
+                    <p>Creators: Ellen Rud-Gentile, Adriana Ovalle, Jonathan Antia <!--<a href="https://personalwebsitehere">Name</a>.--></p>
+                </li>
+
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+    <!-- API Key -->
+    <script src='static/js/config.js'></script>
+
+    <!-- JS File -->
+    <script src='static/js/app.js'></script>
+</body>
+</html>
+
+
+
+
+      
+  </body>
