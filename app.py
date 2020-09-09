@@ -28,7 +28,7 @@ def jsondata():
     rows= engine.execute("select flood_description, name, address, city, zip_code, district_id, latitude, longitude, neighborhood_code, 
 @app.route('/')
 def hello():
-    return{"hello":"world"}
+    return{"hello":"world2"}
 def data():
     rows = engine.execute("select * from master")
     return render_template("data.html", data=rows)
