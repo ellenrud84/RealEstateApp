@@ -10859,3 +10859,11 @@ a[datatoggle="collapse"]{
 .elegant-color-dark{
   color:#212121
 }
+
+/* for sliders */
+#GC .slider-selection {
+	background: #428041;
+}
+#GC .slider-handle {
+	background: green;
+}
