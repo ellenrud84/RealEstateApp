@@ -2,7 +2,7 @@
 from flask import (Flask, render_template, jsonify, request, redirect)
 from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
-from models import create_classes
+# from models import create_classes
 from sqlalchemy import create_engine
 import os
 import pandas as pd
@@ -21,7 +21,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db= SQLAlchemy(app)
 
-Classes= create_classes(db)
+# Classes= create_classes(db)
 
 # @app.route("/jsondata")
 # def jsondata():
