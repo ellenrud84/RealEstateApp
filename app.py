@@ -1,7 +1,7 @@
 # load modules
 from flask import (Flask, render_template, jsonify, request, redirect)
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+# from flask_migrate import Migrate
 from models import create_classes
 from sqlalchemy import create_engine
 import os
