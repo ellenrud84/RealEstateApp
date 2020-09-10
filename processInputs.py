@@ -1,7 +1,9 @@
-def scores (dictionaryOfUserInput):
-    # import dependency modules
-    from pull import SQL_Pull
+# import dependency modules
+import pull
 
+def scores (dictionaryOfUserInput):
+    
+    
     w_budget = dictionaryOfUserInput["budget"]
     w_sales = dictionaryOfUserInput["sales"]
     w_crime = dictionaryOfUserInput["crime"]
@@ -12,7 +14,7 @@ def scores (dictionaryOfUserInput):
     w_change = dictionaryOfUserInput["change"]
 
     # call SQL_Pull function to query the database and create a dataframe
-    df = SQL_Pull(w_budget)
+    df = pull.SQL_Pull(w_budget)
  
     # Normalize data for each parameter
     max=df['sales_neighborhood_2019'].max()
@@ -88,5 +90,6 @@ def scores (dictionaryOfUserInput):
     ranked_neighborhoods = neighborhood_group.sort_values('Score',ascending=False)
 
     top5neighborhoods = ranked_neighborhoods.head()
+#     top5hoods= top5neighborhoods.to_json('top5hoods.html')
     
-    return top5neighborhoods.to_json('top5hoods.json')
+    return top5neighborhoods
