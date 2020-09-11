@@ -1,1 +1,1 @@
-default_inputs={"budget":1000000, "sales":10, "crime":10, "schools":10, "acreage":10, "sqft":10,"flood":10, "change":10}
+default_inputs={"budget":1000000, "salesWeight":5, "crimeWeight":5, "schoolWeight":5, "acreageWeight":5, "sqftWeight":5,"floodWeight":5, "changeValueWeight'":5}

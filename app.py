@@ -17,12 +17,32 @@ import processInputs
 app= Flask(__name__)
 
 ###### DEFINE HOME ROUTE #################################
+@app.route('/api/<weightCriteriaProvided>')
+def results(weightCriteriaProvided):
+    ##############CALL ON SCORES MODULE FROM processInputs WITH DEFAULT INPUTS######################################
+    data = processInputs.scores(weightCriteriaProvided)
+    ########## RETURNS AT HOME ROUTE: #####################
+    return render_template('results.html', table=[data.to_html(classes='data')], titles=data.columns.values)
+
+
 @app.route('/')
 def home():
-    ##############CALL ON SCORES MODULE FROM processInputs WITH DEFAULT INPUTS######################################
-    data = processInputs.scores(default_inputs)
-    ########## RETURNS AT HOME ROUTE: #####################
-    return render_template('index.html', table=[data.to_html(classes='data')], titles=data.columns.values)
+    return render_template('index.html')
+
+@app.route('/api/jsonData/<weightCriteriaProvided>')
+def data(weightCriteriaProvided):
+    data = processInputs.scores(weightCriteriaProvided)
+    return jsonify(data)
+
+@app.route('/apis')
+def apis():
+    return(
+        f'Available api routes: <br>'
+        f'json Data: /api/jsonData/weightCriteriaProvided <br> '
+        f'Results:  /api/weightCriteriaProvided'
+    )
+       
+        
 
 ############# FLASK CLOSING CODE ###################    
 if __name__ =='__main__':

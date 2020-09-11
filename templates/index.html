@@ -44,10 +44,10 @@
     
                         <h6 class = "form-text">Max. Budget</h6>
                         <!-- slider -->
-                        <div  id="budget" class="d-flex justify-content-center my-2">
+                        <div   class="d-flex justify-content-center my-2">
                           <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
                           <div class="slidecontainer">
-                            <input type="range" min="1" max="1000000" value="500000" class="slider" id="my-range">
+                            <input id="budget" type="range" min="1" max="1000000" value="500000" class="slider" >
                             <label for="my-range">Value: (500000)</label>
                           </div>
                           <span class="font-weight-bold blue-text ml-2 mt-1 ">1MM</span>
@@ -58,20 +58,20 @@
                     </li>
                     <li>
                         <h6>Sales Frequency</h6>
-                        <div  id = "sales" class="d-flex justify-content-center my-2">
+                        <div  class="d-flex justify-content-center my-2">
                             <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
                             <div class="slidecontainer">
-                              <input type="range" min="1" max="10" value="5" class="slider" id="salesRange">
+                              <input id = "salesWeight" type="range" min="1" max="10" value="5" class="slider">
                             </div>
                             <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
                           </div>
                     </li>
                     <li> 
                         <h6>School Ratings</h6>
-                        <div id = "schools" class="d-flex justify-content-center my-2">
+                        <div class="d-flex justify-content-center my-2">
                           <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
                           <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="schoolsRange">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="schoolWeight">
                           </div>
                           <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
                           </div>
@@ -80,10 +80,10 @@
                         <h6>
                             Crime Frequency
                         </h6>
-                        <div id = "crime" class="d-flex justify-content-center my-2">
+                        <div class="d-flex justify-content-center my-2">
                           <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
                           <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="crimeRange">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="crimeWeight">
                           </div>
                           <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
                           </div>
@@ -94,10 +94,10 @@
                         <h6>
                             Acreage
                         </h6>
-                        <div id = "acreage" class="d-flex justify-content-center my-2">
+                        <div class="d-flex justify-content-center my-2">
                           <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
                           <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="acreageRange">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="acreageWeight">
                           </div>
                           <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
                           </div>
@@ -108,10 +108,10 @@
                         <h6>
                             Square Footage
                         </h6>
-                        <div id= "sqft" class="d-flex justify-content-center my-2">
+                        <div class="d-flex justify-content-center my-2">
                           <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
                           <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="sqftRange">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="sqftWeight">
                           </div>
                           <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
                           </div>
@@ -122,10 +122,10 @@
                         <h6>
                             Flood Risk
                         </h6>
-                        <div id = "flood" class="d-flex justify-content-center my-2">
+                        <div class="d-flex justify-content-center my-2">
                           <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
                           <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="floodRange">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="floodWeight">
                           </div>
                           <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
                           </div>
@@ -137,14 +137,14 @@
                         <div id= "valuation" class="d-flex justify-content-center my-2">
                           <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
                           <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="valueRange">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="changeValueWeight">
                           </div>
                           <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
                           </div>
                         
                     </li>
                 </ul>
-                <h6 class = "button btn">Submit</h6>
+                <h6 id= "filter-btn" class = "button btn">Submit</h6>
             
         </nav>
 
@@ -260,6 +260,7 @@
 
     <!-- JS File -->
     <script src='../static/js/app.js'></script>
+    <script src='../static/js/event_listeners.js'></script>
 </body>
 </html>
 

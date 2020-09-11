@@ -5,13 +5,13 @@ def scores (dictionaryOfUserInput):
     
     
     w_budget = dictionaryOfUserInput["budget"]
-    w_sales = dictionaryOfUserInput["sales"]
-    w_crime = dictionaryOfUserInput["crime"]
-    w_schools = dictionaryOfUserInput["schools"]
-    w_acreage = dictionaryOfUserInput["acreage"]
-    w_SQ_FT = dictionaryOfUserInput["sqft"]
-    w_flood = dictionaryOfUserInput["flood"]
-    w_change = dictionaryOfUserInput["change"]
+    w_sales = dictionaryOfUserInput["salesWeight"]
+    w_crime = dictionaryOfUserInput["crimeWeight"]
+    w_schools = dictionaryOfUserInput["schoolWeight"]
+    w_acreage = dictionaryOfUserInput["acreageWeight"]
+    w_SQ_FT = dictionaryOfUserInput["sqftWeight"]
+    w_flood = dictionaryOfUserInput["floodWeight"]
+    w_change = dictionaryOfUserInput["changeValueWeight"]
 
     # call SQL_Pull function to query the database and create a dataframe
     df = pull.SQL_Pull(w_budget)
