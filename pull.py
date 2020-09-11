@@ -60,7 +60,7 @@ def SQL_Pull(budget):
     results_df.loc[(results_df['flood_description']=='AREA OF MINIMAL FLOOD HAZARD'),'flood_risk']=1
     results_df.loc[(results_df['flood_description']=='0.2 PCT ANNUAL CHANCE FLOOD HAZARD'),'flood_risk']=2
     results_df.loc[(results_df['flood_description']=='FLOODWAY'),'flood_risk']=3
-    results_df.loc[(results_df['flood_description']=='High-Risk Flood Zone'),'flood_risk']=3
+    results_df.loc[(results_df['flood_description']==' '),'flood_risk']=3 #some come as blank should be 3
     del results_df['flood_description']
     del results_df['name']
     del results_df['address']
