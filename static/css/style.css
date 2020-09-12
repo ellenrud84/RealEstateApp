@@ -72,7 +72,7 @@ body {
   text-align: left;
   background-color: #fff;
   /* ellen edited the padding from the template */
-  padding-top:125px
+  padding-top:75px
 }
 
 body > footer{
@@ -406,7 +406,7 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  font-size: 0.75rem;
+  font-size: 0.5rem;
 }
 
 .lead {
@@ -4950,7 +4950,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: white;
+  color: white !important;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
@@ -10605,7 +10605,7 @@ th {
   width: 20% ; /* Set the width of the sidebar */
   position: fixed !important; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 2 !important; /* Stay on top */
-  top: 100 !important; /* Stay at the top */
+  top: 75 !important; /* Stay at the top */
   right: 75 !important;
   background-color:#c5ecd3 !important;
   overflow-x: visible; /* Disable horizontal scroll */
@@ -10792,14 +10792,13 @@ a[datatoggle="collapse"]{
 @media (max-width: 768px){
 
   .sidebar{
-    width:0;
+    widows: 100px;;
   }
   .sm-font{
     font-size:8pt!important;
   }
 
   .main, .main-index {
-    background-color: beige;
     color: dark var(--gray-dark)
   }
  
@@ -10820,16 +10819,16 @@ a[datatoggle="collapse"]{
 }
 /* media query for sidebar on mobile  devices*/
 @media(maxwidth:400){
-  .sidebar, .sidenav, .card{
+  /* .sidebar, .sidenav, .card{
     display:none;
-  }
+  } */
   .sm-font{
     font-size:4pt!important;
   }
   
 
   .main, .main-index {
-    background-color: beige;
+    /* background-color: beige; */
     color: dark var(--gray-dark)
   }
 }
@@ -10865,18 +10864,66 @@ a[datatoggle="collapse"]{
   width: 75%; /* Width of the outside container */
 }
 
+
 /* The slider itself */
 .slider {
-  -webkit-appearance: none;  /* Override default CSS styles */
+  -webkit-appearance: none !important;  /* Override default CSS styles */
   appearance: none;
-  width: 100%; /* Full-width */
+  width: 95%; /* Full-width */
   height: 10px; /* Specified height */
-  background: #d3d3d3 ! important; /* Grey background */
+  background: linear-gradient(90deg, rgb(214,214,214) 60%); /* Grey background */
   outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
   transition: opacity .2s;
+  border-radius: 7px;
 }
+.budgetSlider {
+  -webkit-appearance: none !important;  /* Override default CSS styles */
+  appearance: none;
+  width: 95%; /* Full-width */
+  height: 10px; /* Specified height */
+  background: linear-gradient(90deg, rgb(117, 252, 117) 60%); /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  border-radius: 7px;
+}
+/* .budegtslider::after{
+  content: '1MM';
+  color:"black";
+  font-size: 10px;
+  position: fixed;
+  left: 80%;
+  top: 26%;
+}
+.slider::after{
+  content: '10'
+  color:"black";
+  font-size: 10px;
+  position: fixed;
+  left: 80%;
+  top: 26%;
+}
+
+.slider::before{
+  content: '0';
+  color:"black";
+  font-size: 2rem;
+  position: fixed;
+  right: 80%;
+  top: 26%;
+}
+.budgetslider::before{
+  content: '0';
+  color:"black";
+  font-size: 2rem;
+  position: fixed;
+  right: 80%;
+  top: 26%;
+}
+ */
 
 /* Mouse-over effects */
 .slider:hover {
@@ -10885,17 +10932,63 @@ a[datatoggle="collapse"]{
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none !important; /* Override default look */
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 12px; /* Slider handle height */
+  width: 20px !important; /* Set a specific slider handle width */
+  height: 20px !important; /* Slider handle height */
   background: #4CAF50 !important; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  border-radius: 50% !important;
+  cursor: pointer !important; /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 12px; /* Slider handle height */
-  background: #4CAF50; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  -webkit-appearance: none !important; /* Override default look */
+  appearance: none;
+  width: 20px !important; /* Set a specific slider handle width */
+  height: 20px !important; /* Slider handle height */
+  background: #4CAF50 !important; /* Green background */
+  border-radius: 50% !important;
+  cursor: pointer !important; /* Cursor on hover */
+}
+
+/* Mouse-over effects */
+.budgetslider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.budgetslider::-webkit-slider-thumb {
+  -webkit-appearance: none !important; /* Override default look */
+  appearance: none;
+  width: 20px !important; /* Set a specific slider handle width */
+  height: 20px !important; /* Slider handle height */
+  background: #4CAF50 !important; /* Green background */
+  border-radius: 50% !important;
+  cursor: pointer !important; /* Cursor on hover */
+}
+
+.budgetslider::-moz-range-thumb {
+  -webkit-appearance: none !important; /* Override default look */
+  appearance: none;
+  width: 20px !important; /* Set a specific slider handle width */
+  height: 20px !important; /* Slider handle height */
+  background: #4CAF50 !important; /* Green background */
+  border-radius: 50% !important;
+  cursor: pointer !important; /* Cursor on hover */
+}
+
+.sidebarHeader{
+  font-size: 9pt;
+  margin-top:1px !important;
+  margin-bottom: 1px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.explain{
+  font-size: 8pt;
+  color:forestgreen
+  margin-top:1px !important;
+  margin-bottom: 1px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
 }

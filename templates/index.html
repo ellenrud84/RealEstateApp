@@ -15,15 +15,14 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
 
     <!-- our CSS -->
-    <link rel="stylesheet" href="static/css/style.css"/>
+    <link rel="stylesheet" href="../static/css/style.css"/>
 
     <!-- Bring in our bootstrap stylesheet -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
   </head>
@@ -31,129 +30,103 @@
   <body>
     <div class= "wrapper">
 
-        <div id="mySidebar" class="sidebar">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        </div>
+        <!-- <div id="mySidebar" class="sidebar">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
 
-        <!-- sidebar filter form-->
-        <nav  class="sidebar" id="mainSidebar">
-                <ul class= "list-unstyled sidenav a" >
-                    <li> 
-                        <div class="form-group">
-                
+          <!-- sidebar filter form-->
+          <nav class="sidebar" id="mySidebar">
+                   
+              <!-- form froup of all sliders -->
+              <div class="form-group">
+
+                <!-- budget slider -->
+                </p><h6 class= "sidebarHeader">Max. Budget</h6> </p>
+                    <div class="slidecontainer">
+                      <form method="POST" action="test"></form>
+                        <input id= "budget" class= "slider" type="range" step= "50000" min="0" max="1000000" value ="1000000" name="budget">  
+                      </form>
+                    </div>
+                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: $<span id="budgetValue"></span> USD</p>   
+              
+                <!-- indicator of what rest of sliders mean -->
+                <p class= "explain"><em>RANK PARAMETER IMPORTANCE BELOW:</em></p>
+                <div class = "dropdown-divider"></div> 
+
+                <!-- sales weight slider -->
+                </p><h6 class= "sidebarHeader">High Sales Frequency</h6></p>
+                    <div class="slidecontainer">
+                      <form method="POST" action="test"></form>
+                        <input id= "salesWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="salesWeight">  
+                      </form>
+                    </div>
+                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="salesValue"></span></p>   
     
-                        <h6 class = "form-text">Max. Budget</h6>
-                        <!-- slider -->
-                        <div   class="d-flex justify-content-center my-2">
-                          <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                          <div class="slidecontainer">
-                            <input id="budget" type="range" min="1" max="1000000" value="500000" class="slider" >
-                            <label for="my-range">Value: (500000)</label>
-                          </div>
-                          <span class="font-weight-bold blue-text ml-2 mt-1 ">1MM</span>
-                    </li>
-                    <li> 
-                        <h6 class = "form-text"><strong>Relative Importance</strong></h6>
-                        <div class = "dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <h6>Sales Frequency</h6>
-                        <div  class="d-flex justify-content-center my-2">
-                            <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                            <div class="slidecontainer">
-                              <input id = "salesWeight" type="range" min="1" max="10" value="5" class="slider">
-                            </div>
-                            <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
-                          </div>
-                    </li>
-                    <li> 
-                        <h6>School Ratings</h6>
-                        <div class="d-flex justify-content-center my-2">
-                          <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                          <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="schoolWeight">
-                          </div>
-                          <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
-                          </div>
-                    </li>
-                    <li>
-                        <h6>
-                            Crime Frequency
-                        </h6>
-                        <div class="d-flex justify-content-center my-2">
-                          <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                          <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="crimeWeight">
-                          </div>
-                          <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
-                          </div>
-                      
-                    </li>
-
-                    <li>
-                        <h6>
-                            Acreage
-                        </h6>
-                        <div class="d-flex justify-content-center my-2">
-                          <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                          <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="acreageWeight">
-                          </div>
-                          <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
-                          </div>
-                      
-                    </li>
-
-                    <li>
-                        <h6>
-                            Square Footage
-                        </h6>
-                        <div class="d-flex justify-content-center my-2">
-                          <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                          <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="sqftWeight">
-                          </div>
-                          <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
-                          </div>
-        
-                    </li>
-
-                    <li>
-                        <h6>
-                            Flood Risk
-                        </h6>
-                        <div class="d-flex justify-content-center my-2">
-                          <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                          <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="floodWeight">
-                          </div>
-                          <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
-                          </div>
-                        
-                    </li>
-
-                    <li>
-                        <h6>Value Appreciation</h6>
-                        <div id= "valuation" class="d-flex justify-content-center my-2">
-                          <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                          <div class="slidecontainer">
-                            <input type="range" min="1" max="10" value="5" class="slider" id="changeValueWeight">
-                          </div>
-                          <span class="font-weight-bold blue-text ml-2 mt-1 valueSpan">10</span>
-                          </div>
-                        
-                    </li>
-                </ul>
-                <h6 id= "filter-btn" class = "button btn">Submit</h6>
+                <!-- School Ratings Slider -->
+                </p><h6 class= "sidebarHeader">School Ratings</h6></p>
+                <div class="slidecontainer">
+                    <form method="POST" action="test"></form>
+                      <input id= "schoolWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="schoolWeight">  
+                    </form>
+                </div>
+                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="schoolValue"></span></p>   
             
-        </nav>
+                  <!-- Crime Ratings Slider -->
+                  </p><h6 class= "sidebarHeader">Low Crime Frequency</h6></p>
+                  <div class="slidecontainer">
+                    <form method="POST" action="test"></form>
+                      <input id= "crimeWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="crimeWeight">  
+                    </form>
+                  </div>
+                  <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="crimeValue"></span></p> 
+
+                <!-- Acreage Ratings Slider -->
+                </p><h6 class= "sidebarHeader">High Acreage</h6></p>
+                <div class="slidecontainer">
+                  <form method="POST" action="test"></form>
+                    <input id= "acreageWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="acreageWeight">  
+                  </form>
+                </div>
+                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="acreageValue"></span></p>  
+
+                 <!-- SQFT Ratings Slider -->
+                </p><h6 class= "sidebarHeader">High Square Footage</h6></p>
+                <div class="slidecontainer">
+                  <form method="POST" action="test"></form>
+                    <input id= "sqftWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="sqftWeight">  
+                  </form>
+                </div>
+                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="sqftValue"></span></p>  
+
+                  <!-- Flood Ratings Slider -->
+                </p><h6 class= "sidebarHeader">Low Flood Risk</h6></p>
+                <div class="slidecontainer">
+                  <form method="POST" action="test"></form>
+                    <input id= "floodWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="floodWeight">  
+                  </form>
+                </div>
+                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="floodValue"></span></p>  
+
+                 <!-- Value Ratings Slider -->
+                </p><h6 class= "sidebarHeader">High Annual Value Increase</h6></p>
+                <div class="slidecontainer">
+                  <form method="POST" action="test"></form>
+                    <input id= "valueWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="valueWeight">  
+                  </form>
+                </div>
+                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="valueValue"></span></p>  
+                        
+                <h6 id= "filter-btn" class = "button btn">Submit</h6>
+              </div>
+            
+          </nav>
+        </div>
 
         <div class = "main">
             <!-- start of nav bar -->
             <nav class ="navbar navbar-expand-lg fixed-top navbar-dark bg-success">
                 <!-- container for nav bar content -->
                 <div class= "container-fluid">
-                    <a href="index.html" class="navbar-brand mr-auto">Real Estate Investment Tool</a>
+                    <a href="index.html" class="navbar-brand mr-auto">Real Estate Investing Tool</a>
                     <!-- button to show or hide nav items?? -->
                     <button class= "navbar-toggler" type="button" data-toggle="collapse" 
                     data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -245,10 +218,16 @@
         </div>
     </footer>
 
+    <!-- ion range slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -260,12 +239,9 @@
 
     <!-- JS File -->
     <script src='../static/js/app.js'></script>
-    <script src='../static/js/event_listeners.js'></script>
-</body>
-</html>
+    <!-- <script src='../static/js/event_listeners.js'></script> -->
+    <script src='../static/js/sliders.js'></script>
 
 
-
-
-      
   </body>
+</html>
