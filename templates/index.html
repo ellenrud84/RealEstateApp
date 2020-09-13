@@ -19,7 +19,7 @@
 
     <!-- Bring in our bootstrap stylesheet -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -172,12 +172,12 @@
             <div class="page-header" >
                
               <div id = "content1" >   
-                <h1>Neighborhoods Assessed</h1> 
+               
                 <!--Adrianas GeoJSON -->
-                <div id="map"></div> 
+                <div id="map" class = "showData"> <h1>Available Parameters & Neightborhoods</h1></div> 
                 <!-- <div id="map"style= "visibility:visible; display:block"></div>  -->
               </div>
-              <div id = "content2" class= "hideData"> test content 2</div>
+              <div id = "content2" class= "hideData"> Results</div>
           </div>
         </div>
     </div>
@@ -205,16 +205,17 @@
     </footer>
 
     <!-- ion range slider -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-
-    
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script> -->
+   
     <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   
     <!-- popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   
     <!-- bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
     <!-- leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
@@ -223,8 +224,7 @@
     <!-- API Key -->
     <script src='../static/js/config.js'></script>
 
-    <!-- JS File -->
-    <!-- <script src='../static/js/app.js'></script> -->
+    <!-- local JS Files -->
     <script src='../static/js/homepageChart.js'></script>
     <script src='../static/js/sliders.js'></script>
     <script src='../static/js/event_listeners.js'></script>
