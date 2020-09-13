@@ -31,7 +31,8 @@ def results(weightCriteriaProvided):
 def home():
     return render_template('index.html')
 
-@app.route('/api/jsonData/?q/budget<budget>/salesWeight<salesWeight>/crimeWeight<crimeWeight>/schoolWeight<schoolWeight>/acreageWeight<acreageWeight>/sqftWeight<sqftweight>/floodWeight<floodWeight>/valueChangeWeight<valueChangeWeight>')
+@app.route('/api/jsonData/?q/params<params>)
+# budget<budget>/salesWeight<salesWeight>/crimeWeight<crimeWeight>/schoolWeight<schoolWeight>/acreageWeight<acreageWeight>/sqftWeight<sqftWeight>/floodWeight<floodWeight>/valueChangeWeight<valueChangeWeight>')
 def data(weightCriteriaProvided):
     inputBudget = (int(request.args['budget']), 1000000)
     inputSalesWeight= (int(request.args['salesweight']), 5)

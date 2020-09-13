@@ -42,9 +42,7 @@
                 <!-- budget slider -->
                 </p><h6 class= "sidebarHeader">Max. Budget</h6> </p>
                     <div class="slidecontainer">
-                      <form method="POST" action="test"></form>
                         <input id= "budget" class= "slider" type="range" step= "50000" min="0" max="1000000" value ="1000000" name="budget">  
-                      </form>
                     </div>
                 <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: $<span id="budgetValue"></span> USD</p>   
               
@@ -55,67 +53,63 @@
                 <!-- sales weight slider -->
                 </p><h6 class= "sidebarHeader">High Sales Frequency</h6></p>
                     <div class="slidecontainer">
-                      <form method="POST" action="test"></form>
-                        <input id= "salesWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="salesWeight">  
-                      </form>
+                        <input id= "salesWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="salesWeight"> 
                     </div>
                 <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="salesValue"></span></p>   
     
                 <!-- School Ratings Slider -->
                 </p><h6 class= "sidebarHeader">School Ratings</h6></p>
                 <div class="slidecontainer">
-                    <form method="POST" action="test"></form>
                       <input id= "schoolWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="schoolWeight">  
-                    </form>
                 </div>
                 <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="schoolValue"></span></p>   
             
                   <!-- Crime Ratings Slider -->
                   </p><h6 class= "sidebarHeader">Low Crime Frequency</h6></p>
                   <div class="slidecontainer">
-                    <form method="POST" action="test"></form>
                       <input id= "crimeWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="crimeWeight">  
-                    </form>
                   </div>
                   <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="crimeValue"></span></p> 
 
                 <!-- Acreage Ratings Slider -->
                 </p><h6 class= "sidebarHeader">High Acreage</h6></p>
                 <div class="slidecontainer">
-                  <form method="POST" action="test"></form>
                     <input id= "acreageWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="acreageWeight">  
-                  </form>
                 </div>
                 <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="acreageValue"></span></p>  
 
                  <!-- SQFT Ratings Slider -->
                 </p><h6 class= "sidebarHeader">High Square Footage</h6></p>
                 <div class="slidecontainer">
-                  <form method="POST" action="test"></form>
+                 
                     <input id= "sqftWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="sqftWeight">  
-                  </form>
+                 
                 </div>
                 <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="sqftValue"></span></p>  
 
                   <!-- Flood Ratings Slider -->
                 </p><h6 class= "sidebarHeader">Low Flood Risk</h6></p>
                 <div class="slidecontainer">
-                  <form method="POST" action="test"></form>
+                  
                     <input id= "floodWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="floodWeight">  
-                  </form>
+                 
                 </div>
                 <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="floodValue"></span></p>  
 
                  <!-- Value Ratings Slider -->
                 </p><h6 class= "sidebarHeader">High Annual Value Increase</h6></p>
                 <div class="slidecontainer">
-                  <form method="POST" action="test"></form>
+                  
                     <input id= "valueWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="valueWeight">  
-                  </form>
+               
                 </div>
                 <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="valueValue"></span></p>  
                         
-                <h6 id= "filter-btn" class = "button btn">Submit</h6>
+                <h6 id= "filter-btn" class = "button btn"> Submit<h6>
+                  <!-- <button onclick="reroute()">Submit</button></h6> -->
+                  <script>
+                 
+                  </script>
               </div>
             
           </nav>
@@ -176,24 +170,16 @@
         <div class = "row">
           <div class= "col-lg-12">  
             <div class="page-header" >
-              <h1>Neighborhoods Currently Included</h1>  
-              <div id="table">
-                {% for table in table %}
-                  {{titles[loop.index]}}
-                  {{ table|safe }}
-                {% endfor %}
-            </div>
+               
+              <div id = "content1" >   
+                <h1>Neighborhoods Assessed</h1> 
+                <!--Adrianas GeoJSON -->
+                <div id="map"></div> 
+                <!-- <div id="map"style= "visibility:visible; display:block"></div>  -->
+              </div>
+              <div id = "content2" class= "hideData"> test content 2</div>
           </div>
         </div>
-        <div id="mapMain"></div>
-        <br>
-        <div id= "mapFocused"></div>
-        <br>
-        <div id= "bar1"></div>
-        <br>
-        <div id = "ibar"></div>
-        <br>
-        <div id = "iMap"></div>
     </div>
 
     <!-- footer elements -->
@@ -238,9 +224,13 @@
     <script src='../static/js/config.js'></script>
 
     <!-- JS File -->
-    <script src='../static/js/app.js'></script>
-    <!-- <script src='../static/js/event_listeners.js'></script> -->
+    <!-- <script src='../static/js/app.js'></script> -->
+    <script src='../static/js/homepageChart.js'></script>
     <script src='../static/js/sliders.js'></script>
+    <script src='../static/js/event_listeners.js'></script>
+    
+
+   
 
 
   </body>
