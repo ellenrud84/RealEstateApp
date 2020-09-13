@@ -18,47 +18,54 @@ from werkzeug.http import HTTP_STATUS_CODES
 app= Flask(__name__)
 
 ###### DEFINE HOME ROUTE #################################
-@app.route('/api/<weightCriteriaProvided>')
-def results(weightCriteriaProvided):
-    ##############CALL ON SCORES MODULE FROM processInputs WITH DEFAULT INPUTS######################################
-    data = processInputs.scores(weightCriteriaProvided)
-    ########## RETURNS AT HOME ROUTE: #####################
-    return render_template('results.html', table=[data.to_html(classes='data')], titles=data.columns.values)
-
-
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/api/jsonData/?q/params<params>)
-# budget<budget>/salesWeight<salesWeight>/crimeWeight<crimeWeight>/schoolWeight<schoolWeight>/acreageWeight<acreageWeight>/sqftWeight<sqftWeight>/floodWeight<floodWeight>/valueChangeWeight<valueChangeWeight>')
-def data(weightCriteriaProvided):
-    inputBudget = (int(request.args['budget']), 1000000)
-    inputSalesWeight= (int(request.args['salesweight']), 5)
-    inputCrimeWeight= (int(request.args['crimeWeight']), 5)
-    inputSchoolWeight=(int(request.args['schoolWeight']), 5)
-    inputAcreageWeight=(int(request.args['acreageWeight']), 5)
-    inputSQFTWeight=(int(request.args['sqftWeight']), 5)
-    inputFloodWeight=(int(request.args['floodWeight']), 5)
-    inputValueChangeWeight=(int(request.args['valueChangeWeight']), 5)
+@app.route('/api/jsonData/<budget>/<salesWeight>/<crimeWeight>/<schoolWeight>/<acreageWeight>/<sqftWeight>/<floodWeight>/<valueChangeWeight>')
+def data(budget, salesWeight, crimeWeight, schoolWeight, acreageWeight, sqftWeight, floodWeight, valueChangeWeight):
 
-  
-    data = processInputs.scores(weightCriteriaProvided)
-    return jsonify(data)
+    dictionaryOfUserInput={}
+    dictionaryOfUserInput["budget"]=float(budget)
+    dictionaryOfUserInput["salesWeight"]=int(salesWeight)
+    dictionaryOfUserInput["crimeWeight"]=int(crimeWeight)
+    dictionaryOfUserInput["schoolWeight"]=int(schoolWeight)
+    dictionaryOfUserInput["acreageWeight"]=int(acreageWeight)
+    dictionaryOfUserInput["sqftWeight"]=int(sqftWeight)
+    dictionaryOfUserInput["floodWeight"]=int(floodWeight)
+    dictionaryOfUserInput["changeValueWeight"]=int(valueChangeWeight)
 
-@app.route('/apis')
-def apis():
-    return(
-        f'Available api routes: <br>'
-        f'json Data: /api/jsonData/weightCriteriaProvided <br> '
-        f'Results:  /api/weightCriteriaProvided'
-    )
 
-@app.route("/test", methods=["POST"])
-def test():
-    budget = request.form["budget"]
-    return budget
+    data = processInputs.scores(dictionaryOfUserInput)
+    return data.to_json()
+
+
+# @app.route('/api/results')
+# def results():
+#     return render_template('results.html')
+
+# @app.route('/api/jsonData/<budget>')
+# def data(budget):
+
+#     budget=float(budget)
+#     data = pull.SQL_Pull(budget)
+#     return data.to_json()
+
+
+
+# @app.route('/apis')
+# def apis():
+#     return(
+#         f'Available api routes: <br>'
+#         f'json Data: /api/jsonData/?q/budget/salesWeight/crimeWeight/schoolWeight/acreageWeight/sqftweight/floodWeight/valueChangeWeight<br> '
+#         f'Results:  /api/?q/budget/salesWeight/crimeWeight/schoolWeight/acreageWeight/sqftweight/floodWeight/valueChangeWeight
+#     )
+
+# @app.route("/test", methods=["POST"])
+# def test():
+   
+#     return budget
 
 ##########  ERROR HANDLING ##################
 def error_response(status_code, message=None):
