@@ -6,70 +6,72 @@
 // create a tbody variable to get a handle on the html element
 const tbody = d3.select('tbody');
 
-// select the results button
+// select the button
 const button = d3.select('#filter-btn');
 
+
+
 // create an event handler for clicking the button or pressing the enter key
-button.on('click', handleResultButtonSubmit);
+button.on('click', runEnter);
 
 window.addEventListener('keyup', function (event){
     if (event.defaultPrevented){
         return;
     }
     if (event.keyCode === 13){
-        handleResultButtonSubmit();
+        runEnter();
     }
-});
+})
 
-function handleResultButtonSubmit(){
-    // get the value property of the each input
-    const inputBudget = d3.select('#budget').property('value');
-    const inputSalesWeight = d3.select('#salesWeight').property('value');
-    const inputCrimeWeight = d3.select('#crimeWeight').property('value');
-    const inputSchoolWeight = d3.select('#schoolWeight').property('value');
-    const inputAcreageWeight = d3.select('#acreageWeight').property('value');
-    const inputSQFTWeight = d3.select('#sqftWeight').property('value');
-    const inputFloodWeight = d3.select('#floodWeight').property('value');
-    const inputValueChangeWeight = d3.select('#changeValueWeight').property('value');
 
-    // create an empty object to hold the user input
-    let weightCriteriaProvided = {};
+/// create a function to run for both events
+function runEnter () {
 
-    // check if input criteria was provided and add to weightCriteria object
-    if (!(inputBudget == "")){weightCriteriaProvided.budget = inputBudget;}
-        else{weightCriteriaProvided.budget = 1000000;} // default value
-    if (!(inputSalesWeight == "")){weightCriteriaProvided.salesWeight = inputSalesWeight;}
-        else{weightCriteriaProvided.salesWeight = 5;} // default value
-    if (!(inputCrimeWeight == "")){weightCriteriaProvided.crimeWeight = inputCrimeWeight;}
-        else{weightCriteriaProvided.crimeWeight = 5;} // default value
-    if (!(inputSchoolWeight == "")){weightCriteriaProvided.schoolWeight = inputSchoolWeight;}
-        else{weightCriteriaProvided.schoolWeight = 5;} // default value
-    if (!(inputAcreageWeight == "")){weightCriteriaProvided.acreageWeight = inputAcreageWeight;}
-        else{weightCriteriaProvided.acreageWeight = 5;} // default value
-    if (!(inputSQFTWeight == "")){weightCriteriaProvided.SQFTWeight = inputSQFTWeight;}
-        else{weightCriteriaProvided.SQFTWeight = 5;} // default value
-    if (!(inputFloodWeight == "")){weightCriteriaProvided.floodWeight = inputFloodWeight;}
-        else{weightCriteriaProvided.floodWeight = 5;} // default value
-    if (!(inputValueChangeWeight == "")){weightCriteriaProvided.ValueChangeWeight = inputValueChangeWeight;}
-        else{weightCriteriaProvided.ValueChangeWeight = 5;} // default value
-    
+    // hide content on click
+    document.getElementById("content1").className += "hideData";
+
+    //show content on click:
+    document.getElementById("content2").classList.add('showData');
+
+    document.getElementById("content2").classList.remove('hideData')
+
+    //IDENTIFY SLIDERS
+    /////////////////////////////////////////////////
+    const budgetSlider = document.getElementById("budget");
+    const salesSlider = document.getElementById("salesWeight");
+    const schoolSlider = document.getElementById("schoolWeight");
+    const crimeSlider = document.getElementById("crimeWeight");
+    const acreageSlider = document.getElementById("acreageWeight");
+    const sqftSlider = document.getElementById("sqftWeight");
+    const floodSlider = document.getElementById("floodWeight");
+    const valueSlider = document.getElementById("valueWeight");
+
+
+    //PULL VALUES FROM SLIDERS
+    const budget=budgetSlider.value;
+    console.log(budget)
+    const salesWeight=salesSlider.value;
+    const schoolWeight=schoolSlider.value;
+    const crimeWeight=crimeSlider.value;
+    const acreageWeight=acreageSlider.value;
+    const sqftWeight=sqftSlider.value;
+    const floodWeight=floodSlider.value;
+    const valueWeight=valueSlider.value;
+
     // call the function that will update the content of the page based on user's input
-    top5NeighborhoodsContent(weightCriteriaProvided)
+    top5NeighborhoodsContent(budget, salesWeight, schoolWeight, crimeWeight,acreageWeight,sqftWeight, floodWeight, valueWeight)
 }
 
 //////////////////////////////////////////////////////////////////
 // FUNCTION TO PROVIDE RESULTS BASED ON USER'S SELECTION
 //////////////////////////////////////////////////////////////////
-function top5NeighborhoodsContent(weightCriteriaProvided){
-    const baseURL= 'https://ellenrud84-real-estate-app.herokuapp.com'
-    const api_url= "/api/jsonData/"
-    url='/api/jsonData/{"budget":1000000, "salesWeight":5, "crimeWeight":5, "schoolWeight":5, "acreageWeight":5, "sqftWeight":5,"floodWeight":5, "changeValueWeight":5}'
-    // console.log(url)
-    d3.json(`${api_url}${weightCriteriaProvided}`).then((response)=>{
+function top5NeighborhoodsContent(budget, salesWeight, schoolWeight, crimeWeight,acreageWeight,sqftWeight, floodWeight, valueWeight){
+  
+    d3.json(`/api/jsonData/${budget}/${salesWeight}/${crimeWeight}/${schoolWeight}/${acreageWeight}/${sqftWeight}/${floodWeight}/${valueWeight}`).then((response)=>{
         const data = response;
         console.log(data);
     })
-}
+};
 
 //         /////////////////////////////////////////
 //         // SUMMARY TABLE
@@ -98,7 +100,7 @@ function top5NeighborhoodsContent(weightCriteriaProvided){
 //         }));
 
 //         // use d3 to select the table body
-//         const tbody = d3.select('tbody');
+//         const tbody = d3.select('#table');
 
 //         console.log('Neighborhood Data:')
 //         console.log(tableData);
@@ -113,6 +115,9 @@ function top5NeighborhoodsContent(weightCriteriaProvided){
 //             })
             
 //         });
+//     })
+
+// };
 //         ///////////////////////////////////////////////////
 //         // SUMMARY MAP - TOP 5 NEIGHBORHOODS
 //         ///////////////////////////////////////////////////
