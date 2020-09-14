@@ -11004,3 +11004,39 @@ a[datatoggle="collapse"]{
   height: 700px;
   width: 1100px;
 }
+
+/* RESULTS TABLE FORMATTING */
+#table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.results{
+  color: rgb(1, 68, 33);
+}
+
+/* FOR LOADING ANIMATION */
+
+.bar_container{
+  width: 50%;
+  margin: 0px auto;
+  margin-top: 20px
+}
