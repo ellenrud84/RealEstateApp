@@ -26,7 +26,7 @@ salesSlider.oninput= function(){
 
 salesSlider.addEventListener("mousemove", function(){
     const x = salesSlider.value;
-    const color = "linear-gradient(90deg, rgb(117, 252, 117)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
+    const color = "linear-gradient(90deg, rgb(1, 68, 33)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
     salesSlider.style.background = color;
 });
 
@@ -42,7 +42,7 @@ schoolSlider.oninput= function(){
 
 schoolSlider.addEventListener("mousemove", function(){
     const x = schoolSlider.value;
-    const color = "linear-gradient(90deg, rgb(117, 252, 117)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
+    const color = "linear-gradient(90deg, rgb(1, 68, 33)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
     schoolSlider.style.background = color;
 });
 
@@ -58,7 +58,7 @@ crimeSlider.oninput= function(){
 
 crimeSlider.addEventListener("mousemove", function(){
     const x = crimeSlider.value;
-    const color = "linear-gradient(90deg, rgb(117, 252, 117)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
+    const color = "linear-gradient(90deg, rgb(1, 68, 33)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
     crimeSlider.style.background = color;
 });
 
@@ -74,7 +74,7 @@ acreageSlider.oninput= function(){
 
 acreageSlider.addEventListener("mousemove", function(){
     const x = acreageSlider.value;
-    const color = "linear-gradient(90deg, rgb(117, 252, 117)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
+    const color = "linear-gradient(90deg, rgb(1, 68, 33)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
     acreageSlider.style.background = color;
 });
 
@@ -90,7 +90,7 @@ sqftSlider.oninput= function(){
 
 sqftSlider.addEventListener("mousemove", function(){
     const x = sqftSlider.value;
-    const color = "linear-gradient(90deg, rgb(117, 252, 117)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
+    const color = "linear-gradient(90deg, rgb(1, 68, 33)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
     sqftSlider.style.background = color;
 });
 
@@ -106,7 +106,7 @@ floodSlider.oninput= function(){
 
 floodSlider.addEventListener("mousemove", function(){
     const x = floodSlider.value;
-    const color = "linear-gradient(90deg, rgb(117, 252, 117)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
+    const color = "linear-gradient(90deg, rgb(1, 68, 33)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
     floodSlider.style.background = color;
 });
 
@@ -122,7 +122,7 @@ valueSlider.oninput= function(){
 
 valueSlider.addEventListener("mousemove", function(){
     const x = valueSlider.value;
-    const color = "linear-gradient(90deg, rgb(117, 252, 117)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
+    const color = "linear-gradient(90deg, rgb(1, 68, 33)" + x*10 + "%, rgb(214,214,214)" + x*10 + "%)";
     valueSlider.style.background = color;
 });
 

@@ -20,9 +20,14 @@
     <!-- Bring in our bootstrap stylesheet -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
+    <!-- Add jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     
   </head>
@@ -105,11 +110,8 @@
                 </div>
                 <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="valueValue"></span></p>  
                         
-                <h6 id= "filter-btn" class = "button btn"> Submit<h6>
-                  <!-- <button onclick="reroute()">Submit</button></h6> -->
-                  <script>
+                <h6 id= "filter-btn" class = "button btn " onclick="load_bar()"> Submit<h6>
                  
-                  </script>
               </div>
             
           </nav>
@@ -144,20 +146,9 @@
                                 <a class="dropdown-item" href="#">Page 3</a>
                             </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                Dropdown2
-                                </a>
-                                <span class="rt_caret"></span>
-                                <div class="dropdown-menu" aria-labelledby="themes">
-                                <a class="dropdown-item" href="index.html">Home/Inputs</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Other Page</a>
-                                <a class="dropdown-item" href="#l">Other Page</a>
-                                </div>
-                            </li>
+                            
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Data</a>
+                                <a class="nav-link" href="/apis'">API List</a>
                             </li>
                         </ul>
                     </div>
@@ -167,19 +158,62 @@
     </div>
     <!--finished with navbar onto page header  -->
     <div class= "main-index">
-        <div class = "row">
-          <div class= "col-lg-12">  
-            <div class="page-header" >
-               
-              <div id = "content1" >   
-               
+    
+            <div id = "content1" class = "showData">   
+                <h1>Neighborhoods & Parameters</h1>
                 <!--Adrianas GeoJSON -->
-                <div id="map" class = "showData"> <h1>Available Parameters & Neighborhoods</h1></div> 
+                <div id="map" ></div> 
                 <!-- <div id="map"style= "visibility:visible; display:block"></div>  -->
-              </div>
-              <div id = "content2" class= "hideData"> Results</div>
-          </div>
-        </div>
+            </div>
+        
+
+          
+            <div id = "content2" class= "hideData">
+                <div class = "bar_container">
+                    Loading ...
+                    <div class = "progress">
+                        <div class = "progress-bar progress-bar-animated active" id = progress_one role = "progressbar" aria-valuenow="0" aria-valuemin = "0" aria-valuemax="100">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="content3"  class = "hideData">
+              
+                <p><h3 class= "results"> Results: Top 5 Neighborhoods Based on User Preferences</h3></p>
+                <div class ='row'>
+                  <div id = 'map_hou_top_5' class="col-lg-6"></div>
+                  <div id = 'hbarPlotTopScores' class="col-lg-6"></div>
+                </div>
+                <div>
+                    <br>
+                    <h5>Chart Options:</h5>
+                    <!-- <label for="parameters">Choose a parameter:</label> -->
+                    <select id="parameters" onchange="handleBarChartSubmit(this.value)">
+                    <option value="ElseCondition">Parameters:</option>
+                    <option value="SalesIndex">Sales Index</option>
+                    <option value="CrimeIndex">Crime Index</option>
+                    <option value="SchoolRating">School Rating</option>
+                    <option value="AcreageIndex">Acreage Index</option>
+                    <option value="SQFTIndex">SQFT Index</option>
+                    <option value="FloodIndex">Flood Index</option>
+                    <option value="ValueChangeIndex">Value Change Index</option>
+                    <option id = 'neighborhoods'value="Neighborhoods">Neighborhoods:</option>
+                    </select>
+                    </div>
+                    <div id = 'barPlotParameter' class='row'></div>
+                    <div>
+                        <h1> Neighborhood Parameters</h1>
+                        <div id = "table" style="overflow-x:auto;"></div>
+                    </div>
+                </div>
+            </div>
+                  
+          
+        
     </div>
 
     <!-- footer elements -->
@@ -204,18 +238,15 @@
         </div>
     </footer>
 
-    <!-- ion range slider -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script> -->
-   
     <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   
+
     <!-- popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-   
+
     <!-- bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
+
     <!-- leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
@@ -224,14 +255,11 @@
     <!-- API Key -->
     <script src='../static/js/config.js'></script>
 
-    <!-- local JS Files -->
+    <!-- Local JS Files -->
     <script src='../static/js/homepageChart.js'></script>
     <script src='../static/js/sliders.js'></script>
     <script src='../static/js/event_listeners.js'></script>
-    
-
-   
-
+    <script src='../static/js/loading.js'></script>
 
   </body>
 </html>

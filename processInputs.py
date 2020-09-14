@@ -1,5 +1,8 @@
-# import dependency modules
-import pull
+# Dependencies
+import pandas as pd
+from pull import SQL_Pull
+import plotly
+
 
 def scores (dictionaryOfUserInput):
     
@@ -14,14 +17,13 @@ def scores (dictionaryOfUserInput):
     w_change = dictionaryOfUserInput["changeValueWeight"]
 
     # call SQL_Pull function to query the database and create a dataframe
-    df = pull.SQL_Pull(w_budget)
- 
+    df = SQL_Pull(w_budget)
+
     # Normalize data for each parameter
     max=df['sales_neighborhood_2019'].max()
     min=df['sales_neighborhood_2019'].min()
     df["Sales Index"]=(df['sales_neighborhood_2019']-min)/(max-min)*100
-    
-  
+
     max=df['Offense_Count'].max()
     min=df['Offense_Count'].min()
     df["Crime Index"]=(df['Offense_Count']-min)/(max-min)*100
@@ -66,30 +68,61 @@ def scores (dictionaryOfUserInput):
                                     w_flood*df['Flood Risk Index']+
                                     w_change*df['Valuation Index'])/total_weights,2)
 
-    # convert the score to percentage and scale them
-    max=df["Score"].max()
-    min=df["Score"].min()
-    max=df["Score"]=(df["Score"]-min)/(max-min)*100
-
     # look at only the parameters of interest
-    parameter_and_score = df[["Sales Index",'Crime Index', 'School Rating Index',
+    parameter_and_score = df[['latitude','longitude','Sales Index','Crime Index', 'School Rating Index',
             'Acreage Index','SQ_FT Index', 'Flood Risk Index', 'Valuation Index','Score',
             'total_appraised_value_2019','neighborhood']]
 
     # group parameters by neighborhood name
     neighborhood_group = parameter_and_score.groupby(['neighborhood']).mean()
+    
+    # add count of residences per neighborhood
+    residence_count = parameter_and_score.groupby(["neighborhood"]).count()
+    renamed_count = residence_count.rename(columns = {"latitude":"Counts"})
+    single_column_counts = renamed_count["Counts"]
 
-    # To get to the top list, neighnorhoods need positive valuation index and non-zero sales index
-    neighborhood_group=neighborhood_group.loc[(neighborhood_group['Valuation Index']>0)&(neighborhood_group['Sales Index']>0),:]
+    # merge the counts to the neighborhood group
+    neighborhood_group_with_counts = neighborhood_group.merge(single_column_counts,how='inner',on='neighborhood')
 
-    min=neighborhood_group['Valuation Index'].min()
-    max=neighborhood_group['Valuation Index'].max()
-    min=neighborhood_group['Valuation Index']=(neighborhood_group['Valuation Index']-min)/(max-min)*100
+    # To get to the top list, neighborhoods need positive valuation index and non-zero sales index
+    neighborhood_group_with_counts=neighborhood_group_with_counts.loc[(neighborhood_group_with_counts['Valuation Index']>0)&(neighborhood_group_with_counts['Sales Index']>0)&(neighborhood_group_with_counts['Score']>0),:]
+
+    min=neighborhood_group_with_counts['Valuation Index'].min()
+    max=neighborhood_group_with_counts['Valuation Index'].max()
+    neighborhood_group_with_counts['Valuation Index']=(neighborhood_group_with_counts['Valuation Index']-min)/(max-min)*100
+
+    min=neighborhood_group_with_counts['Score'].min()
+    max=neighborhood_group_with_counts['Score'].max()
+    neighborhood_group_with_counts['Score']=(neighborhood_group_with_counts['Score']-min)/(max-min)*100                                                                                                                        
+
+    min=neighborhood_group_with_counts['Sales Index'].min()
+    max=neighborhood_group_with_counts['Sales Index'].max()
+    neighborhood_group_with_counts['Sales Index']=(neighborhood_group_with_counts['Sales Index']-min)/(max-min)*100 
+
+    min=neighborhood_group_with_counts['Crime Index'].min()
+    max=neighborhood_group_with_counts['Crime Index'].max()
+    neighborhood_group_with_counts['Crime Index']=(neighborhood_group_with_counts['Crime Index']-min)/(max-min)*100   
+
+    min=neighborhood_group_with_counts['School Rating Index'].min()
+    max=neighborhood_group_with_counts['School Rating Index'].max()
+    neighborhood_group_with_counts['School Rating Index']=(neighborhood_group_with_counts['School Rating Index']-min)/(max-min)*100
+
+    min=neighborhood_group_with_counts['Acreage Index'].min()
+    max=neighborhood_group_with_counts['Acreage Index'].max()
+    neighborhood_group_with_counts['Acreage Index']=(neighborhood_group_with_counts['Acreage Index']-min)/(max-min)*100 
+
+    min=neighborhood_group_with_counts['SQ_FT Index'].min()
+    max=neighborhood_group_with_counts['SQ_FT Index'].max()
+    neighborhood_group_with_counts['SQ_FT Index']=(neighborhood_group_with_counts['SQ_FT Index']-min)/(max-min)*100                                                                                                                          
+
+    min=neighborhood_group_with_counts['Flood Risk Index'].min()
+    max=neighborhood_group_with_counts['Flood Risk Index'].max()
+    neighborhood_group_with_counts['Flood Risk Index']=(neighborhood_group_with_counts['Flood Risk Index']-min)/(max-min)*100   
+
+    neighborhood_group_with_counts=neighborhood_group_with_counts.rename(columns={"total_appraised_value_2019":"Mean Value 2019"})                                                                                                                  
 
     # sort scores
-    ranked_neighborhoods = neighborhood_group.sort_values('Score',ascending=False)
+    ranked_neighborhoods = neighborhood_group_with_counts.sort_values('Score',ascending=False)
+    top5neighborhoods= ranked_neighborhoods.head()
 
-    top5neighborhoods = ranked_neighborhoods.head()
-#     top5hoods= top5neighborhoods.to_json('top5hoods.html')
-    
-    return top5neighborhoods
+    return top5neighborhoods 
