@@ -1,40 +1,17 @@
-backcall==0.2.0
-certifi==2020.6.20
-click==7.1.2
-colorama==0.4.3
-decorator==4.4.2
-Flask==1.1.2
-Flask-SQLAlchemy==2.4.4
-gunicorn==20.0.4
-ipykernel @ file:///C:/ci/ipykernel_1596206775157/work/dist/ipykernel-5.3.4-py3-none-any.whl
-ipython @ file:///C:/ci/ipython_1593446240034/work
-ipython-genutils==0.2.0
-itsdangerous==1.1.0
-jedi @ file:///C:/ci/jedi_1596472773465/work
-Jinja2==2.11.2
-jupyter-client @ file:///tmp/build/80754af9/jupyter_client_1594826976318/work
-jupyter-core==4.6.3
-MarkupSafe==1.1.1
-mkl-fft==1.1.0
-mkl-random==1.1.1
-mkl-service==2.3.0
-numpy @ file:///C:/ci/numpy_and_numpy_base_1596233948451/work
-pandas==1.1.2
-parso==0.7.0
-pickleshare==0.7.5
-plotly @ file:///tmp/build/80754af9/plotly_1599764639247/work
-prompt-toolkit @ file:///tmp/build/80754af9/prompt-toolkit_1598885458782/work
-psycopg2 @ file:///C:/ci/psycopg2_1594303009470/work
-Pygments==2.6.1
-python-dateutil==2.8.1
-pytz==2020.1
-pywin32==227
-pyzmq==19.0.1
-retrying==1.3.3
-six==1.15.0
-SQLAlchemy==1.3.19
-tornado==6.0.4
-traitlets==4.3.3
-wcwidth @ file:///tmp/build/80754af9/wcwidth_1593447189090/work
-Werkzeug==1.0.1
-wincertstore==0.2
+dnspython
+Flask
+itsdangerous
+Jinja2
+MarkupSafe
+numpy
+pandas
+psycopg2-binary
+python-dateutil
+pytz
+six
+SQLAlchemy
+Werkzeug
+plotly
+Flask
+Flask-SQLAlchemy
+gunicorn
