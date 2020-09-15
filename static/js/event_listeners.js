@@ -279,7 +279,10 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
                 title: 'Index'
             },
             margin:{
-                b: 150
+                b: 200
+            },
+            xaxis:{
+                font_size:"8pt"
             }
         };
 
