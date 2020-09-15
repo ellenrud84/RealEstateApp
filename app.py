@@ -18,6 +18,7 @@ import plotly
 
 ####### INITIATE FLASK APP #########################
 app= Flask(__name__)
+app.static_folder = 'static'
 
 ###### DEFINE HOME ROUTE #################################
 
