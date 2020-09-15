@@ -7,13 +7,13 @@ function load_bar(){
 
         function handleProgressBar(){
 
-            //change class tp hide prog bar
+            //change class t0 hide prog bar
             document.getElementById('content2').className='hideData';
     
             // change the class of the results page to show data
-            document.getElementById('content3').className=('showData')
+            document.getElementById('content3').className='showData';
         };
-        
+
         //if prog bar at 100 percent
         if(fill ===100){
             clearInterval();

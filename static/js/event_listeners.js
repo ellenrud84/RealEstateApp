@@ -44,10 +44,9 @@ function handleResultButtonSubmit(){
 
     
     // change the class of of the #content1 html element to hide data
-        homePageContent.className='hideData';
-        resultsContent.className='hideData'
-        progBarContent.className='showData'
-    
+    homePageContent.className='hideData';
+    resultsContent.className='hideData';
+    progBarContent.className='showData';
     
 
     // get the value property of the each input
