@@ -35,19 +35,15 @@ window.addEventListener('keyup', function (event){
 });
 
 function handleResultButtonSubmit(){
-    //going from home page to prog bar
-    //define elements
-    const homePageContent = document.getElementById('content1');
-    const progBarContent = document.getElementById('content2');
-    const resultsContent = document.getElementById('content3');
 
-
-    
     // change the class of of the #content1 html element to hide data
-    homePageContent.className='hideData';
-    resultsContent.className='hideData';
-    progBarContent.className='showData';
-    
+    document.getElementById('content1').classList.add('hideData');
+    document.getElementById('content1').classList.remove('showData');
+
+
+    // change the class of the results page to show data
+    document.getElementById('content2').classList.add('showData')
+    document.getElementById('content2').classList.remove('hideData');
 
     // get the value property of the each input
     const budgetSlider = document.getElementById('budget');
@@ -143,7 +139,7 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
         if(myMap1){myMap1.remove()};
 
         myMap1 = L.map("map_hou_top_5", {
-            center: [29.74, -95.367497],
+            center: [29.76, -95.37],
             zoom: 11
         });
         
@@ -284,9 +280,6 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
             },
             margin:{
                 b: 200
-            },
-            xaxis:{
-                font_size:"8pt"
             }
         };
 
@@ -365,7 +358,7 @@ function updateInteractiveBarChart(parameter){
             rangemode: 'tozero'
         },
         margin:{
-            b: 150
+            b: 200
         }
     }
         Plotly.newPlot('barPlotParameter', [ParameterTrace], parameterLayout);
@@ -461,7 +454,7 @@ function updateInteractiveBarChart(parameter){
             title: 'Index'
         },
         margin:{
-            b: 150
+            b: 200
         }
     };
 
