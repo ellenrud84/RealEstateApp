@@ -6,9 +6,10 @@ function load_bar(){
     window.setInterval(function(){
         fill +=2;
 
+        // function to toggle content
         function handleProgressBar(){
             
-            // function to toggle content:
+            // get elements
             const resultsContent=document.getElementById('content3')
             const progBarContent = document.getElementById('content2')
 
@@ -25,7 +26,7 @@ function load_bar(){
             }
 
             // scenario where user is choosing preferences for first time and content is switching from home to results
-            else{
+            else if (resultsContent.classList.contains('hideData')){
                 // show progress bar
                 progBarContent.classList.add('showData');
                 progBarContent.classList.remove('hideData');

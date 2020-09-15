@@ -42,8 +42,8 @@ function handleResultButtonSubmit(){
 
 
     // change the class of the results page to show data
-    document.getElementById('content2').classList.add('showData')
-    document.getElementById('content2').classList.remove('hideData');
+    document.getElementById('content3').classList.add('showData')
+    document.getElementById('content3').classList.remove('hideData');
 
     // get the value property of the each input
     const budgetSlider = document.getElementById('budget');
