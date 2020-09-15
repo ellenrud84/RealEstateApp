@@ -14,6 +14,7 @@ The coding approach was divided in 4 main components:
 
 ### Database
 A Heroku-Postgres database based was created based on the following ETL diagram
+![Figure1](Images/ETL.png)
 
 Python then processes the data further based on the users selected preferences to output a json file.
 When a user accesses our website they see a map containing all the parameters that the program can investigate.
