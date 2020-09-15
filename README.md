@@ -1,7 +1,7 @@
 # Real Estate Investment Dashboard
 
 ## Project Goal
-Real Estate investment research is time consuming because of the lack of a single place to find all the information related to home value tendencies, school ratings, flood zones, crime rate and amount of transactions happening per zip code in Houston. The following dashboard responds to an investor with a ranking of neighborhoods in 9 Zip Codes in the Houston area to invest in.
+Real Estate investment research is time consuming because of the lack of a single place to find all the information related to home value tendencies, school ratings, flood zones, crime rate and amount of transactions happening per zip code in Houston. The following dashboard responds to an investor with a ranking of neighborhoods in 9 Zip Codes in the Houston area to invest in. The ranking depends on the investor preferences in terms of budget and importance of 7 parameters: 
 
 ## General Workflow
 The coding approach was divided in 4 main components:
