@@ -10,10 +10,10 @@ The coding approach was divided in 4 main components:
 3-	Python Flask: the development of the web application is done thru the Flask web framework. 2 routes were created: 1 for the main page and a second one for the results page.
 4-	Visualization: HTML and CSS files were generated to create the visualization of the results, using a combination of bootstrap, leaflet and d3.
 
-## Detail Dedscription
+## Detailed Dedscription
 
 ### Database
-Our group created a Heroku-Postgres database based on our prior ETL activity under Adrianas ETL repository.
+A Heroku-Postgres database based was created based on the following ETL diagram
 
 Python then processes the data further based on the users selected preferences to output a json file.
 When a user accesses our website they see a map containing all the parameters that the program can investigate.
