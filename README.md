@@ -1,4 +1,18 @@
-# Group3_Project2
+# Real Estate Investment Dashboard
+
+## Project Goal
+Real Estate investment research is time consuming because of the lack of a single place to find all the information related to home value tendencies, school ratings, flood zones, crime rate and amount of transactions happening per zip code in Houston. The following dashboard responds to an investor with a ranking of neighborhoods in 9 Zip Codes in the Houston area to invest in.
+
+## General Workflow
+The coding approach was divided in 4 main components:
+1-	Database: Postgres Database was used to store 9 tables with a total of 150,000 rows where data related to single family properties in 9 selected Zip_Codes in Houston is stored. The data contains property description such as address, latititude, longitude, value, sq_ft, acreage, flood zone, crime risk and schools ratings. This database runs in Heroku cloud server.
+2-	Python: Python calls the SQL database, where most of the data is filtered and merged in SQL. Then, calculations are done to generate a ranking of the neighborhoods to invest in depending on users criteria.
+3-	Python Flask: the development of the web application is done thru the Flask web framework. 2 routes were created: 1 for the main page and a second one for the results page.
+4-	Visualization: HTML and CSS files were generated to create the visualization of the results, using a combination of bootstrap, leaflet and d3.
+
+## Detail Dedscription
+
+### Database
 Our group created a Heroku-Postgres database based on our prior ETL activity under Adrianas ETL repository.
 
 Python then processes the data further based on the users selected preferences to output a json file.
