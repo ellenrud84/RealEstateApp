@@ -11040,3 +11040,8 @@ a[datatoggle="collapse"]{
   margin: 0px auto;
   margin-top: 20px
 }
+
+/* for homepage map popups */
+.black-txt{
+  color: black !important;
+}
