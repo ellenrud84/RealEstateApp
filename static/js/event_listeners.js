@@ -12,14 +12,13 @@ let data,
     flood,
     valuation,
     tableData,
-    markers;
+    markers,
+    tileLayerMap,
+    myMap1;
 
 ///////////////////////////////////////////////////////////
 // SCRIPT TO HANDLE USER SELECTED CRITERIA FROM HOME PAGE
 ///////////////////////////////////////////////////////////
-
-// create a tbody variable to get a handle on the html element
-// const tbody = d3.select('tbody');
 
 // select the results button
 const button = d3.select('#filter-btn');
@@ -35,23 +34,6 @@ window.addEventListener('keyup', function (event){
         handleResultButtonSubmit();
     }
 });
-
-// add a map showing houston's top 5 neighborhoods
-// Creating map object
-const myMap1 = L.map("map_hou_top_5", {
-    center: [29.76, -95.37],
-    zoom: 11
-});
-
-// Adding tile layer to the map
-L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-    tileSize: 100,
-    maxZoom: 13,
-    zoomOffset: -1,
-    id: "mapbox/streets-v11",
-    accessToken: API_KEY
-}).addTo(myMap1)
 
 function handleResultButtonSubmit(){
 
@@ -124,17 +106,19 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
             numResidences: Math.round(residentialCounts[i]),
             score: Math.round(scores[i])
         }));
-
+        // delete the table if it exists
+        d3.selectAll('th').remove();
+        d3.selectAll('tr').remove();
+        
         // use d3 to select the table body
         const tbody = d3.select('#table');
-
-        // add code to delete an existing table before adding the new one
 
         // add table headers
         const headers = Object.keys(tableData[0]);
 
         headers.forEach(item => {
             let columnHeader = tbody.append('th');
+            columnHeader.classed('tableinfo', true);
             columnHeader.text(item);
         });
 
@@ -143,6 +127,7 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
             let row = tbody.append('tr');
             Object.values(neighborhood).forEach(info => {
                 let cell = row.append('td');
+                cell.classed('tableinfo', true);
                 cell.text(info);
             })
             
@@ -151,6 +136,24 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
         ///////////////////////////////////////////////////
         // SUMMARY MAP - TOP 5 NEIGHBORHOODS
         ///////////////////////////////////////////////////
+        // Remove the map object if it exists
+        if(myMap1){myMap1.remove()};
+
+        // Creating new map object
+        myMap1 = L.map("map_hou_top_5", {
+            center: [29.76, -95.37],
+            zoom: 11
+        });
+
+        // Adding tile layer to the map
+        L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+            attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+            tileSize: 100,
+            maxZoom: 13,
+            zoomOffset: -1,
+            id: "mapbox/streets-v11",
+            accessToken: API_KEY
+        }).addTo(myMap1)
         
         // create an object with info per neighborhood
         const latitudes = Object.values(data['latitude']);
@@ -171,8 +174,6 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
             markers.bindPopup("<h7>"+hood.neighborhoodName+"</h7><br><h8>Total Score: "+hood.score+"</h8>")
             .addTo(myMap1)
         })
-
-    
 
         ////////////////////////////////////////////////
         // HORIZONTAL BAR CHART
