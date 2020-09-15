@@ -36,26 +36,18 @@ window.addEventListener('keyup', function (event){
 
 function handleResultButtonSubmit(){
     //going from home page to prog bar
-    if (document.getElementById('content1').classList.contains('showData')){
+    //define elements
+    const homePageContent = document.getElementById('content1');
+    const progBarContent = document.getElementById('content2');
+    const resultsContent = document.getElementById('content3');
+
+
+    
     // change the class of of the #content1 html element to hide data
-        document.getElementById('content1').classList.add('hideData');
-        document.getElementById('content1').classList.remove('showData');
-
-
-        // change the class of the results page to show data
-        document.getElementById('content2').classList.add('showData')
-        document.getElementById('content2').classList.remove('hideData');
-    }
-    //going from results pg to prog bar
-    else{
-        document.getElementById('content3').classList.add('hideData');
-        document.getElementById('content3').classList.remove('showData');
-
-
-        // change the class of the results page to show data
-        document.getElementById('content2').classList.add('showData')
-        document.getElementById('content2').classList.remove('hideData');
-    };
+        homePageContent.className='hideData';
+        resultsContent.className='hideData'
+        progBarContent.className='showData'
+    
     
 
     // get the value property of the each input
