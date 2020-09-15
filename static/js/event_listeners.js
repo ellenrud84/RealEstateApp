@@ -75,7 +75,6 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
     d3.json(`/api/jsonData/${w_budget}/${w_sales}/${w_crime}/${w_schools}/${w_acreage}/${w_SQ_FT}/${w_flood}/${w_change}`)
     .then((response)=>{
         data = response;
-        console.log(data);
 
         /////////////////////////////////////////
         // SUMMARY TABLE
@@ -83,28 +82,28 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
 
         // extract the data needed for the table
         neighborhood = Object.keys(data['latitude']);
-        sales = Object.values(data['Sales Index']);
-        crime = Object.values(data['Crime Index']);
-        school = Object.values(data['School Rating Index']);
-        acreage = Object.values(data['Acreage Index']);
-        sqft = Object.values(data['SQ_FT Index']);
-        flood = Object.values(data['Flood Risk Index']);
-        valuation = Object.values(data['Valuation Index']);
-        residentialCounts = Object.values(data['Counts']);
-        scores = Object.values(data['Score']);
+        sales = Object.values(data['Sales Index']).map(item => Math.round(item));
+        crime = Object.values(data['Crime Index']).map(item => Math.round(item));
+        school = Object.values(data['School Rating Index']).map(item => Math.round(item));
+        acreage = Object.values(data['Acreage Index']).map(item => Math.round(item));
+        sqft = Object.values(data['SQ_FT Index']).map(item => Math.round(item));
+        flood = Object.values(data['Flood Risk Index']).map(item => Math.round(item));
+        valuation = Object.values(data['Valuation Index']).map(item => Math.round(item));
+        residentialCounts = Object.values(data['Counts']).map(item => Math.round(item));
+        scores = Object.values(data['Score']).map(item => Math.round(item));
 
         // create an object with table data
         tableData = neighborhood.map((item,i)=>({
             neighborhood: item, 
-            sales: Math.round(sales[i]),
-            crime: Math.round(crime[i]),
-            school: Math.round(school[i]),
-            acreage: Math.round(acreage[i]),
-            sqft: Math.round(sqft[i]),
-            flood: Math.round(flood[i]),
-            valuation: Math.round(valuation[i]),
-            numResidences: Math.round(residentialCounts[i]),
-            score: Math.round(scores[i])
+            sales: sales[i],
+            crime: crime[i],
+            school: school[i],
+            acreage: acreage[i],
+            sqft: sqft[i],
+            flood: flood[i],
+            valuation: valuation[i],
+            numResidences: residentialCounts[i],
+            score: scores[i]
         }));
         // delete the table if it exists
         d3.selectAll('th').remove();
@@ -140,7 +139,7 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
         if(myMap1){myMap1.remove()};
 
         myMap1 = L.map("map_hou_top_5", {
-            center: [29.76, -95.37],
+            center: [29.74, -95.367497],
             zoom: 11
         });
         
@@ -161,7 +160,7 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
         const neighborhoodData = neighborhood.map((item,i)=>({
             neighborhoodName: item, 
             location: [latitudes[i],longitudes[i]],
-            score: Math.round(scores[i]),
+            score: scores[i],
         }));
 
         // clear existing markers before adding new ones
@@ -208,12 +207,16 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
         /////////////////////////////////////////////
         // INTERACTIVE BAR CHART
         /////////////////////////////////////////////
+        // remove neigborhoods from the dropdown menu before adding new ones
+        d3.selectAll('.hoodMenu').remove();
+
         // add neighborhoods to the dropdown menu
         const dropDownMenu = d3.select('#parameters')
 
         neighborhood.forEach(hood => {
             const option = dropDownMenu.append('option');
-            option.text(`${hood}`)
+            option.text(`${hood}`);
+            option.classed('hoodMenu', true);
             option.attr('value',`${hood}`);
         });
 
@@ -274,6 +277,9 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
             barmode: 'group',
             yaxis:{
                 title: 'Index'
+            },
+            margin:{
+                b: 150
             }
         };
 
@@ -350,6 +356,9 @@ function updateInteractiveBarChart(parameter){
         },
         xaxis: {
             rangemode: 'tozero'
+        },
+        margin:{
+            b: 150
         }
     }
         Plotly.newPlot('barPlotParameter', [ParameterTrace], parameterLayout);
@@ -443,6 +452,9 @@ function updateInteractiveBarChart(parameter){
         barmode: 'group',
         yaxis:{
             title: 'Index'
+        },
+        margin:{
+            b: 150
         }
     };
 
