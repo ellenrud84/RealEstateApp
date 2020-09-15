@@ -1,4 +1,3 @@
-
 ///////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////
@@ -14,12 +13,12 @@ let data,
     tableData,
     markers,
     tileLayerMap,
-    myMap1;
+    myMap1,
+    tableInfo;
 
 ///////////////////////////////////////////////////////////
 // SCRIPT TO HANDLE USER SELECTED CRITERIA FROM HOME PAGE
 ///////////////////////////////////////////////////////////
-
 // select the results button
 const button = d3.select('#filter-btn');
 
@@ -76,6 +75,7 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
     d3.json(`/api/jsonData/${w_budget}/${w_sales}/${w_crime}/${w_schools}/${w_acreage}/${w_SQ_FT}/${w_flood}/${w_change}`)
     .then((response)=>{
         data = response;
+        console.log(data);
 
         /////////////////////////////////////////
         // SUMMARY TABLE
@@ -109,7 +109,7 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
         // delete the table if it exists
         d3.selectAll('th').remove();
         d3.selectAll('tr').remove();
-        
+
         // use d3 to select the table body
         const tbody = d3.select('#table');
 
@@ -136,20 +136,19 @@ function top5NeighborhoodsContent(w_budget,w_sales,w_crime,w_schools,w_acreage,w
         ///////////////////////////////////////////////////
         // SUMMARY MAP - TOP 5 NEIGHBORHOODS
         ///////////////////////////////////////////////////
-        // Remove the map object if it exists
+        // Remove map object if it exists
         if(myMap1){myMap1.remove()};
 
-        // Creating new map object
         myMap1 = L.map("map_hou_top_5", {
             center: [29.76, -95.37],
             zoom: 11
         });
-
+        
         // Adding tile layer to the map
-        L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+        tileLayerMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
             attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-            tileSize: 100,
-            maxZoom: 13,
+            tileSize: 512,
+            maxZoom: 18,
             zoomOffset: -1,
             id: "mapbox/streets-v11",
             accessToken: API_KEY

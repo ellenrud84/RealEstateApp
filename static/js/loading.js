@@ -7,6 +7,11 @@ function load_bar(){
         fill +=2;
 
         function handleProgressBar(){
+            
+
+             document.getElementById('content3').classList.add('hideData')
+             document.getElementById('content3').classList.remove('showData');
+
 
             document.getElementById('content2').classList.add('hideData');
             document.getElementById('content2').classList.remove('showData');
@@ -20,11 +25,12 @@ function load_bar(){
         if(fill ===100){
             clearInterval();
             handleProgressBar();
+            fill=0;
         }
         else{
             document.getElementById("progress_one").style.width= fill+ "%";
         }
 
-    }, 750);
+    }, 500);
 }
 

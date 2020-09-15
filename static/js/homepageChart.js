@@ -43,7 +43,7 @@ const risk3Link="../static/data/COH_100_YR_FLOOD_PLAIN_HARRIS_FEMA.geojson";
 const risk2Link="../static/data/COH_500_YR_FLOOD_PLAIN_HARRIS_FEMA.geojson";
 
 d3.json(risk2Link).then( function(data) {
-  console.log(data.features);
+
 
   const risk2= L.geoJson(data, {
     style: function(feature) {
@@ -82,7 +82,7 @@ d3.json(risk2Link).then( function(data) {
   });
 
 d3.json(risk3Link).then( function(data) {
-  console.log(data.features);
+ 
 
   const risk3= L.geoJson(data, {
     style: function(feature) {
@@ -121,7 +121,7 @@ d3.json(risk3Link).then( function(data) {
   });
 
   d3.json(link).then( function(data) {
-    console.log(data.features);
+  
 
  const zipcodes= L.geoJson(data.features, {
     style: function(feature) {

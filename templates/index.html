@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- <link rel="stylesheet" href="../css/style.css"> -->
 
-
     <!-- Bring in our bootstrap stylesheet -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -28,8 +27,7 @@
     <!-- Add jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- Plotly.js -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
 
     
   </head>
@@ -134,21 +132,7 @@
                     <!-- $('.dropdown-toggle').dropdown() -->
                     <div class= "collapse navbar-collapse" id="navbarResponsive">
                         <ul class= "navbar-nav ml-auto">
-                            <!-- Plots drop down item in navbar -->
-                            <li class="nav-item dropdown"> 
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                Plots
-                                <span class="rt_caret"></span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="themes">
-                                <a class="dropdown-item" href="index.html">Home/ Inputs</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Top 5 Neighborhoods</a>
-                                <a class="dropdown-item" href="#">Page 2</a>
-                                <a class="dropdown-item" href="#">Page 3</a>
-                            </div>
-                            </li>
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link" href="/apis'">API List</a>
                             </li>
@@ -160,61 +144,65 @@
     </div>
     <!--finished with navbar onto page header  -->
     <div class= "main-index">
+        <div class="row">
+            <div class = "col-lg-12">
+                <div id = "content1" class = "showData">   
+                    <h1>Neighborhoods & Parameters</h1>
+                    <!--Adrianas GeoJSON -->
+                    <div id="map" ></div> 
+                    <!-- <div id="map"style= "visibility:visible; display:block"></div>  -->
+                </div>
+            
+                <div id = "content2" class= "hideData">
+                    <div class = "bar_container">
+                        Loading ...
+                        <div class = "progress">
+                            <div class = "progress-bar progress-bar-animated active" id = progress_one role = "progressbar" aria-valuenow="0" aria-valuemin = "0" aria-valuemax="100">
     
-            <div id = "content1" class = "showData">   
-                <h1>Neighborhoods & Parameters</h1>
-                <!--Adrianas GeoJSON -->
-                <div id="map" ></div> 
-                <!-- <div id="map"style= "visibility:visible; display:block"></div>  -->
-            </div>
-        
-
-          
-            <div id = "content2" class= "hideData">
-                <div class = "bar_container">
-                    Loading ...
-                    <div class = "progress">
-                        <div class = "progress-bar progress-bar-animated active" id = progress_one role = "progressbar" aria-valuenow="0" aria-valuemin = "0" aria-valuemax="100">
-
+                            </div>
+    
                         </div>
-
                     </div>
                 </div>
-            </div>
-
-
-            <div id="content3"  class = "hideData">
-              
-                <p><h3 class= "results"> Results: Top 5 Neighborhoods Based on User Preferences</h3></p>
-                <div class ='row'>
-                  <div id = 'map_hou_top_5' class="col-lg-6"></div>
-                  <div id = 'hbarPlotTopScores' class="col-lg-6"></div>
-                </div>
-                <div>
+    
+    
+                <div id="content3"  class = "hideData">
+                  
+                    <p class="row"><h3 class= "results"> Results: Top 5 Neighborhoods Based on User Preferences</h3></p>
                     <br>
-                    <h5>Chart Options:</h5>
-                    <!-- <label for="parameters">Choose a parameter:</label> -->
-                    <select id="parameters" onchange="handleBarChartSubmit(this.value)">
-                    <option value="ElseCondition">Parameters:</option>
-                    <option value="SalesIndex">Sales Index</option>
-                    <option value="CrimeIndex">Crime Index</option>
-                    <option value="SchoolRating">School Rating</option>
-                    <option value="AcreageIndex">Acreage Index</option>
-                    <option value="SQFTIndex">SQFT Index</option>
-                    <option value="FloodIndex">Flood Index</option>
-                    <option value="ValueChangeIndex">Value Change Index</option>
-                    <option id = 'neighborhoods'value="Neighborhoods">Neighborhoods:</option>
-                    </select>
+                    <div class = "row">
+                        <div id = 'map_hou_top_5' class="col-lg-6"></div>
+                        <div id = 'hbarPlotTopScores' class="col-lg-6"></div>
+                    </div>
+                    
+                    <br>
+    
+                    <div class = "row">
+                        <h5>Chart Options:</h5>
+                        <!-- <label for="parameters">Choose a parameter:</label> -->
+                        <select id="parameters" onchange="handleBarChartSubmit(this.value)">
+                        <option value="ElseCondition">Parameters:</option>
+                        <option value="SalesIndex">Sales Index</option>
+                        <option value="CrimeIndex">Crime Index</option>
+                        <option value="SchoolRating">School Rating</option>
+                        <option value="AcreageIndex">Acreage Index</option>
+                        <option value="SQFTIndex">SQFT Index</option>
+                        <option value="FloodIndex">Flood Index</option>
+                        <option value="ValueChangeIndex">Value Change Index</option>
+                        <option id = 'neighborhoods'value="Neighborhoods"></option>
+                        </select>
                     </div>
                     <div id = 'barPlotParameter' class='row'></div>
-                    <div>
+                    <br>
+                    <div class= "row">
                         <h1> Neighborhood Parameters</h1>
                         <div id = "table" style="overflow-x:auto;"></div>
                     </div>
+                    
                 </div>
+
             </div>
-                  
-          
+        </div>
         
     </div>
 
@@ -240,6 +228,12 @@
         </div>
     </footer>
 
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- d3js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+   
     <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
