@@ -76,7 +76,7 @@ d3.json(risk2Link).then( function(data) {
         // }
       });
       // Giving each feature a pop-up with information pertinent to it
-      layer.bindPopup("<h3>High Risk Flood Zone</h3>");
+      layer.bindPopup("<h4>High Risk Flood Zone</h4>");
 
     }
   });
@@ -115,7 +115,7 @@ d3.json(risk3Link).then( function(data) {
         // }
       });
       // Giving each feature a pop-up with information pertinent to it
-      layer.bindPopup("<h3>High Risk Flood Zone</h3>");
+      layer.bindPopup("<h4>High Risk Flood Zone</h4>");
 
     }
   });
@@ -154,7 +154,7 @@ d3.json(risk3Link).then( function(data) {
         // }
       });
       // Giving each feature a pop-up with information pertinent to it
-      layer.bindPopup("<h3>" + feature.properties.PO_NAME + "</h3> <hr> <h4>" + feature.properties.ZIPCODE + "</h4>");
+      layer.bindPopup("<h4>" + feature.properties.PO_NAME + "</h4> <hr> <h4>" + feature.properties.ZIPCODE + "</h4>");
 
     }
   });
@@ -172,7 +172,7 @@ d3.json(highSchoolLink).then(function(response){
           }
       },      
       onEachFeature: function(feature,layer){
-      layer.bindPopup("<h3>High School </h3><hr>" + feature.properties.High_Schoo , {maxWidth: 400});
+      layer.bindPopup("<h4>High School </h4><hr>" + feature.properties.High_Schoo , {maxWidth: 400});
       layer.on({
         // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
         mouseover: function(event) {
@@ -204,7 +204,7 @@ d3.json(highSchoolLink).then(function(response){
               }
           },      
           onEachFeature: function(feature,layer){
-          layer.bindPopup("<h3>Middle School </h3><hr>" + feature.properties.Middle_Sch , {maxWidth: 400});
+          layer.bindPopup("<h4>Middle School </h4><hr>" + feature.properties.Middle_Sch , {maxWidth: 400});
           layer.on({
             // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
             mouseover: function(event) {
@@ -235,7 +235,7 @@ d3.json(highSchoolLink).then(function(response){
                 }
             },      
             onEachFeature: function(feature,layer){
-            layer.bindPopup("<h3>Elementary School </h3><hr>" + feature.properties.Elementary , {maxWidth: 400});
+            layer.bindPopup("<h4>Elementary School </h4><hr>" + feature.properties.Elementary , {maxWidth: 400});
             layer.on({
               // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
               mouseover: function(event) {
