@@ -36,14 +36,14 @@ window.addEventListener('keyup', function (event){
 
 function handleResultButtonSubmit(){
 
-    // change the class of of the #content1 html element to hide data
-    document.getElementById('content1').classList.add('hideData');
-    document.getElementById('content1').classList.remove('showData');
+    // // change the class of of the #content1 html element to hide data
+    // document.getElementById('content1').classList.add('hideData');
+    // document.getElementById('content1').classList.remove('showData');
 
 
-    // change the class of the results page to show data
-    document.getElementById('content3').classList.add('showData')
-    document.getElementById('content3').classList.remove('hideData');
+    // // change the class of the results page to show data
+    // document.getElementById('content3').classList.add('showData')
+    // document.getElementById('content3').classList.remove('hideData');
 
     // get the value property of the each input
     const budgetSlider = document.getElementById('budget');
