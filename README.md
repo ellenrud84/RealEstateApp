@@ -23,21 +23,31 @@ Download: ZIP folders comprised of text files and csv files
 * Crime:
 Source: https://www.houstontx.gov/police/cs/Monthly_Crime_Data_by_Street_and_Police_Beat.htm
 Download: CSV file
+* Shape files for layers: https://cohgis-mycity.opendata.arcgis.com/
 
 
 ## Detailed Description
 
 ### Database
-A Heroku-Postgres database based was created based on the following ETL diagram
+A Heroku-Postgres database was created based on the following ETL diagram. The data consisted of 9 tables with a total of 150,000 row swhere data related to single family properties in 9 selected Zip_Codes in Houston is stored. The data contains property description such as address, latititude, longitude, value, sq_ft, acreage, flood zone, crime risk and schools ratings. This database runs in Heroku cloud server.
 ![Figure1](Images/ETL.png)
 
-Python then processes the data further based on the users selected preferences to output a json file.
-When a user accesses our website they see a map containing all the parameters that the program can investigate.
+## Python layer
+Python processes the data to calculate the 5 top neighborhoods for investment based on the users selected preferences. Python outputs a json file.
+
+## Flask web framework
+Python Flask was used for the development of the web application. 2 routes were created, one for the hoem page and another one fot the process of the results.
+
+## Visualizations
+### Homepage
+The main part of the screen shows a map with the location of the 9 zip codes of interest.
 The user can view the boundaries and popup information of each of these parameters in a layer.
-The user inputs their preferences for max budget and a relative ranking of how much they care about each of the input parameters
+The banner in the left, allows the user to go thru the preferences for max budget and the importance for them about crime, flood, value increase of the property, acreage, sq_ft.
+The user presses submit, which triggers the Python processing layer.
 THe program then accesses the database and pulls only the data relevant to properties less than the users selected budget.
 Then the program further processes this data based on the users other input preferences.
 
+### Results Page
 Finally the program outputs visualizations of the top 5 neighborhoods in the areas investigated for the user to consider investing in, 
 based on the user's input preferences. 
 
