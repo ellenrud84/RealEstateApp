@@ -5,12 +5,27 @@ Real Estate investment research is time consuming because of the lack of a singl
 
 ## General Workflow
 The coding approach was divided in 4 main components:
-1-	Database: Postgres Database was used to store 9 tables with a total of 150,000 rows where data related to single family properties in 9 selected Zip_Codes in Houston is stored. The data contains property description such as address, latititude, longitude, value, sq_ft, acreage, flood zone, crime risk and schools ratings. This database runs in Heroku cloud server.
-2-	Python: Python calls the SQL database, where most of the data is filtered and merged in SQL. Then, calculations are done to generate a ranking of the neighborhoods to invest in depending on users criteria.
-3-	Python Flask: the development of the web application is done thru the Flask web framework. 2 routes were created: 1 for the main page and a second one for the results page.
-4-	Visualization: HTML and CSS files were generated to create the visualization of the results, using a combination of bootstrap, leaflet and d3.
+* 1-	Database: Postgres Database was used to store 9 tables with a total of 150,000 rows where data related to single family properties in 9 selected Zip_Codes in Houston is stored. The data contains property description such as address, latititude, longitude, value, sq_ft, acreage, flood zone, crime risk and schools ratings. This database runs in Heroku cloud server.
+* 2-	Python: Python calls the SQL database, where most of the data is filtered and merged in SQL. Then, calculations are done to generate a ranking of the neighborhoods to invest in depending on users criteria.
+* 3-	Python Flask: the development of the web application is done thru the Flask web framework. 2 routes were created: 1 for the main page and a second one for the results page.
+* 4-	Visualization: HTML and CSS files were generated to create the visualization of the results, using a combination of bootstrap, leaflet and d3.
 
-## Detailed Dedscription
+## Data Used
+* School Ratings: 
+**	Source: https://texasschoolguide.org/school-rankings/ 
+**	Download: CSV file
+* National Flood Data: 
+o	Source: http://nationalflooddata.com/flood/floodapi/ 
+o	Web request API using street addresses from HCAD dataset
+* Harris County Appraisal District (HCAD): 
+o	Source: https://pdata.hcad.org/download/2019
+o	Download: ZIP folders comprised of text files and csv files
+* Crime:
+o	Source: https://www.houstontx.gov/police/cs/Monthly_Crime_Data_by_Street_and_Police_Beat.htm
+o	Download: CSV file
+
+
+## Detailed Description
 
 ### Database
 A Heroku-Postgres database based was created based on the following ETL diagram
