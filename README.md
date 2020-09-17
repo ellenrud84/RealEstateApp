@@ -36,7 +36,7 @@ A Heroku-Postgres database was created based on the following ETL diagram. The d
 Python processes the data to calculate the 5 top neighborhoods for investment based on the users selected preferences. Python outputs a json file.
 
 ## Flask web framework
-Python Flask was used for the development of the web application. 2 routes were created, one for the hoem page and another one fot the process of the results.
+Python Flask was used for the development of the web application. 2 routes were created, one for the home page and another one for the process of the results.
 
 ## Visualizations
 ### Homepage
