@@ -40,23 +40,23 @@ Python Flask was used for the development of the web application. 2 routes were 
 
 ## Visualizations
 ### Homepage
-The main part of the screen shows a map with the location of the 9 zip codes of interest.
-The user can view the boundaries and popup information of each of these parameters in a layer.
-The banner in the left, allows the user to go thru the preferences for max budget and the importance for them about crime, flood, value increase of the property, acreage, sq_ft.
-The user presses submit, which triggers the Python processing layer.
-THe program then accesses the database and pulls only the data relevant to properties less than the users selected budget.
-Then the program further processes this data based on the users other input preferences.
+* The main part of the screen shows a map with the location of the 9 zip codes of interest.
+* The user can view the boundaries and popup information of each of these parameters in a layer.
+* The banner in the left, allows the user to go thru the preferences for max budget and the importance for decision about sales frequency, school ratings, crime, flood, value increase of the property, acreage and sq_ft.
+* The user presses submit, which triggers the Python processing layer.
+* The code then accesses the database and pulls only the data relevant to properties less than the users selected budget.
+* The code further processes this data based on the users other input preferences and ranks the neighborhoods.
+* The results visualizations are triggered
 
 ### Results Page
-Finally the program outputs visualizations of the top 5 neighborhoods in the areas investigated for the user to consider investing in, 
-based on the user's input preferences. 
+The code outputs visualizations of the top 5 neighborhoods in the ZIP Codes available and ranked based on the user criteria.
 
-While the data is processing from the user inputs and database pull all outputs are hidden and a progress bar is shown.  The duration of hte progress bar animation is
+While the data is processing from the user inputs and database pull all outputs are hidden and a progress bar is shown.  The duration of the progress bar animation is
 based on average load time for the program.
 
 The visualizations consist of:
 1) A map showing the top 5 nieghborhoods locations, with popups for more info about each neighborhood
-2) A bar horizontal chart showing the total scores of each neighborhood based on the users inputs.  This chart shows more info when the user hovers over each bar.
+2) A horizontal bar chart showing the total scores of each neighborhood based on the users inputs.  This chart shows more info when the user hovers over each bar.
 3) An interactive bar chart, where the output is determined by the users choice in a dropdown menu.  The bars show more information when the user hovers over them.
 4) A table showing the scores for each parameter of each of top 5 neighborhoods calculated from the database information and the users ranks of parameter preference.
 
