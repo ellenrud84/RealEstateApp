@@ -41,6 +41,62 @@ const elemSchoolLink="../static/data/ElementaryAttendanceZones1920.geojson";
 const link = "../static/data/ZIPCODE.geojson";
 const risk3Link="../static/data/COH_100_YR_FLOOD_PLAIN_HARRIS_FEMA.geojson";
 const risk2Link="../static/data/COH_500_YR_FLOOD_PLAIN_HARRIS_FEMA.geojson";
+const crimedata='../static/data/2019_crimes_zip_only.geojson';
+
+d3.json(crimedata).then(function(data){
+  console.log(data);
+
+  const crimecount= L.geoJson(data, {
+    style: function(feature) {
+      return {
+        color: "white",
+        fillColor: "DarkCyan",
+        fillOpacity: 0.8,
+        weight: 1.5
+      };
+    }, onEachFeature: function(feature, layer) {
+      // Set mouse events to change map styling
+      layer.on({
+        // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
+        mouseover: function(event) {
+          layer = event.target;
+          layer.setStyle({
+            fillOpacity: 0.9
+          });
+        },
+        // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
+        mouseout: function(event) {
+          layer = event.target;
+          layer.setStyle({
+            fillOpacity: 0.5
+          });
+        },
+        // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
+        // click: function(event) {
+        //   myMap.fitBounds(event.target.getBounds());
+        // }
+      });
+      // Giving each feature a pop-up with information pertinent to it
+      dayCount=feature.properties.Total_Offenses-feature.properties.Offenses_night;
+      layer.bindPopup("2019 Crime Count in "+  feature.properties.Zip_code + "<hr> Night Offenses: " + feature.properties.Offenses_night + "<br>Day Offenses: "+ dayCount +"<br> Total Offenses: "+feature.properties.Total_Offenses, {maxWidth: 400});
+
+    }
+  });
+
+
+
+//   var myMarker = L.AwesomeMarkers.icon({
+//     icon: 'briefcase',
+//     prefix: 'fa',
+//     markerColor: 'green'
+//   });
+
+// data.forEach(d=>{
+//     L.marker([d.Lat, d.Lon],{icon:myMarker})
+//     .bindPopup("<h6>"+d.City+"</h6>" + d.Country+"<hr>" + "Clients: "+d.Clients)
+//     .addTo(myMap2);
+// }
+//     )
 
 d3.json(risk2Link).then( function(data) {
 
@@ -262,7 +318,8 @@ d3.json(highSchoolLink).then(function(response){
     "Middle Schools": middleSchools,
     "Elementary Schools": elemSchools,
     "Flood Risk - High":risk3,
-    "Flood Risk - Medium":risk2
+    "Flood Risk - Medium":risk2,
+    "Crime Count": crimecount
     };
   
  
@@ -278,6 +335,7 @@ d3.json(highSchoolLink).then(function(response){
 }).addTo(myMap);
   
 
+})
 })
 })
 })
@@ -308,5 +366,7 @@ function chooseColor(zipcode) {
   default:
     return "none";
   }
-}
+};
+
+
 

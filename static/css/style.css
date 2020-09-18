@@ -220,7 +220,7 @@ img {
 }
 
 svg {
-  overflow: hidden;
+  overflow: scroll;
   vertical-align: middle;
 }
 
@@ -633,8 +633,8 @@ pre code {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .no-gutters {
@@ -10601,23 +10601,27 @@ th {
 /* The sidebar menu added to templates css by Ellen Rud from bootstrap*/ 
 .sidebar {
   display:block;
-  height: 90% !important; /* Full-height: remove this if you want "auto" height */
-  width: 20% ; /* Set the width of the sidebar */
-  position: fixed !important; /* Fixed Sidebar (stay in place on scroll) */
+  height: auto;
+  /* height: 85% !important; Full-height: remove this if you want "auto" height */
+  /* width: 20% ; Set the width of the sidebar */
+  /* position: fixed !important;  */
   z-index: 2 !important; /* Stay on top */
-  top: 75 !important; /* Stay at the top */
-  right: 75 !important;
+  /* top: 70px !important; /* Stay at the top */
+  /* right: 75 !important; */
   background-color:#c5ecd3 !important;
   overflow-x: visible; /* Disable horizontal scroll */
   overflow-y: scroll;
-  padding-top: 10px !important;
-  padding-bottom: 100px !important;
+  /* padding-top: 10px !important; */
+  /* padding-bottom: 100px !important; */
   padding-left: 20px;
-  margin-bottom: 150px !important;
+  /* margin-bottom: 75px !important; */
+  padding-bottom: 100px;
   z-index: 999;
-  background: blue;
   color: black;
-  transition: all .3s;
+  border: 5px;
+  border-color:forestgreen;
+  border-radius: 25px;
+  /* transition: all .3s; */
 }
 
 @media screen and (max-width:700px){
@@ -10662,17 +10666,22 @@ th {
 
 /* Style page content */
 .main-index {
-  margin-right:15%;
-  margin-left:20%! important;/* Same side and width as the sidebar */
-  margin-bottom:15%;
-  padding: 10px 20px;
+  /* margin-right:5%; */
+  margin-bottom:10px;
+  margin-right:0px;
+  /* position: absolute;
+  top:70px;
+  left:20% ! important;Same side and width as the sidebar */
+  padding:10px;
 }
 .main {
   padding: 10px 10px;
-  position:absolute;
-  margin-left:10%;
-  margin-right: 10%;
-  margin-bottom:15%;
+  /* position:absolute; */
+  /* top: 10px; */
+  /* margin-left:20%! important;/* Same side and width as the sidebar */; */
+  /* margin-right: 5%; */
+  /* margin-bottom:70px;
+  padding-left:10px; */
  
 }
 
@@ -10695,7 +10704,7 @@ a, a:hover, a:focus {
 }
 
 
- #sidebar {
+ /* #sidebar {
   width: 18%;
   position: fixed;
   height: 100%;
@@ -10707,7 +10716,7 @@ a, a:hover, a:focus {
   background: blue;
   color: blue;
   transition: all .3s; 
-} 
+}  */
 
 .overlay{
   display: none;
@@ -10986,7 +10995,7 @@ a[datatoggle="collapse"]{
 
 .explain{
   font-size: 8pt;
-  color:forestgreen
+  color:forestgreen;
   margin-top:1px !important;
   margin-bottom: 1px !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
@@ -11001,8 +11010,13 @@ a[datatoggle="collapse"]{
 }
 
 #map{
-  height: 700px;
-  width: 1100px;
+  height:650px;
+  width: 1200px;
+  border-radius:25px;
+  justify-content: center;
+  text-align: center;
+  margin:10px;
+  padding:10px;
 }
 
 /* RESULTS TABLE FORMATTING */
@@ -11036,12 +11050,92 @@ a[datatoggle="collapse"]{
 /* FOR LOADING ANIMATION */
 
 .bar_container{
-  width: 50%;
-  margin: 0px auto;
-  margin-top: 20px
+  margin: 10px auto;
+  padding-left:10px;
+  width:40vw;
+  position:absolute;
+  left: 20vw;
+  top: 20vw;
 }
 
 /* for homepage map popups */
 .black-txt{
   color: black !important;
+}
+
+.footer{
+  height: 60px;
+  width: 100%;
+  text-align: center;
+}
+
+.Page-Header{
+  background: rgb(2, 75, 85);
+  color:white;   
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+  padding:10px;
+  justify-content: center;
+  font-weight: bold; 
+  font-size:20px; 
+  border-radius: 20px; 
+  height:60px;
+  margin:10px;
+  text-align: center;
+}
+
+.results_2_cols{
+  height:400px;
+  justify-content: center;
+  vertical-align: middle;
+  width:500px;
+
+  padding:10px;
+}
+
+.results_1_col{
+  height: 500px;
+  width: 1050px;
+  border-radius: 25px;
+  margin:10px;
+  padding:10px;
+  justify-content: center;
+  vertical-align: middle;
+}
+.mydropdown{
+  height: 30px;
+}
+
+#map_hou_top_5{
+  height: 400px;
+  width: 500px;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.myTable{
+  overflow-x: scroll;
+  overflow-y: auto;
+  height:500px;
+  width:1000px;
+  justify-content: center;
+  vertical-align: middle;
+  font-size: 8pt;
+}
+
+.myContainer{
+  padding:25px; 
+  border-radius: 25px;
+  height:500px;
+  justify-content: center;
+  vertical-align: middle;
+  background-color:rgb(2, 75, 85, .5);
+}
+
+.myContainer2{
+  border-radius: 25px;
+  height:650px;
+  justify-content: center;
+  vertical-align: middle;
+  padding: 25px;
+  background-color:rgb(2, 75, 85, .5);
 }

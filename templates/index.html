@@ -34,246 +34,341 @@
     
   </head>
   <!-- define body -->
-  <body>
-    <div class= "wrapper">
+    <body>
 
-        <!-- <div id="mySidebar" class="sidebar">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+  
+        <!-- start of nav bar -->
+        <nav class ="navbar navbar-expand-lg fixed-top navbar-dark bg-success">
+            <!-- container for nav bar content -->
+            <div class= "container-fluid">
+                <!-- for heroku -->
+                <a href="https://ellenrud84-real-estate-app.herokuapp.com" class="navbar-brand mr-auto">Real Estate Investing Tool</a>
+                <i class="fab fa-home-square"></i>
+                <!-- for local drive: -->
+                <!-- <a href="index.html" class="navbar-brand mr-auto">Real Estate Investing Tool</a> -->
+                <!-- button to show or hide nav items?? -->
+                <button class= "navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class= "navbar-toggler-icon"></span>
+                </button>
+                <!-- $('.dropdown-toggle').dropdown() -->
+                <div class= "collapse navbar-collapse" id="navbarResponsive">
+                    <ul class= "navbar-nav ml-auto">
 
-          <!-- sidebar filter form-->
-          <nav class="sidebar" id="mySidebar">
-                   
-              <!-- form froup of all sliders -->
-              <div class="form-group">
-
-                <!-- budget slider -->
-                </p><h6 class= "sidebarHeader">Max. Budget</h6> </p>
-                    <div class="slidecontainer">
-                        <input id= "budget" class= "slider" type="range" step= "50000" min="0" max="1000000" value ="1000000" name="budget">  
-                    </div>
-                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: $<span id="budgetValue"></span> USD</p>   
-              
-                <!-- indicator of what rest of sliders mean -->
-                <p class= "explain"><em>RANK PARAMETER IMPORTANCE BELOW:</em></p>
-                <div class = "dropdown-divider"></div> 
-
-                <!-- sales weight slider -->
-                </p><h6 class= "sidebarHeader">High Sales Frequency</h6></p>
-                    <div class="slidecontainer">
-                        <input id= "salesWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="salesWeight"> 
-                    </div>
-                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="salesValue"></span></p>   
-    
-                <!-- School Ratings Slider -->
-                </p><h6 class= "sidebarHeader">School Ratings</h6></p>
-                <div class="slidecontainer">
-                      <input id= "schoolWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="schoolWeight">  
+                        <li class="nav-item">
+                            <!-- for heroku -->
+                            <a class="nav-link" href="https://ellenrud84-real-estate-app.herokuapp.com/apis">API List</a>
+                            <!-- for local drive -->
+                            <!-- <a class="nav-link" href="/apis">API List</a> -->
+                        </li>
+                    </ul>
                 </div>
-                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="schoolValue"></span></p>   
+            </div>
+        </nav>
             
-                  <!-- Crime Ratings Slider -->
-                  </p><h6 class= "sidebarHeader">Low Crime Frequency</h6></p>
-                  <div class="slidecontainer">
-                      <input id= "crimeWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="crimeWeight">  
-                  </div>
-                  <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="crimeValue"></span></p> 
+        
+        <!--finished with navbar onto page header  -->
 
-                <!-- Acreage Ratings Slider -->
-                </p><h6 class= "sidebarHeader">High Acreage</h6></p>
-                <div class="slidecontainer">
-                    <input id= "acreageWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="acreageWeight">  
-                </div>
-                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="acreageValue"></span></p>  
-
-                 <!-- SQFT Ratings Slider -->
-                </p><h6 class= "sidebarHeader">High Square Footage</h6></p>
-                <div class="slidecontainer">
-                 
-                    <input id= "sqftWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="sqftWeight">  
-                 
-                </div>
-                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="sqftValue"></span></p>  
-
-                  <!-- Flood Ratings Slider -->
-                </p><h6 class= "sidebarHeader">Low Flood Risk</h6></p>
-                <div class="slidecontainer">
-                  
-                    <input id= "floodWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="floodWeight">  
-                 
-                </div>
-                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="floodValue"></span></p>  
-
-                 <!-- Value Ratings Slider -->
-                </p><h6 class= "sidebarHeader">High Annual Value Increase</h6></p>
-                <div class="slidecontainer">
-                  
-                    <input id= "valueWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="valueWeight">  
-               
-                </div>
-                <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="valueValue"></span></p>  
-                        
-                <h6 id= "filter-btn" class = "button btn " onclick="load_bar()"> Submit<h6>
-                 
-              </div>
-            
-          </nav>
-        </div>
-
-        <div class = "main">
-            <!-- start of nav bar -->
-            <nav class ="navbar navbar-expand-lg fixed-top navbar-dark bg-success">
-                <!-- container for nav bar content -->
-                <div class= "container-fluid">
-                    <!-- for heroku -->
-                    <a href="https://ellenrud84-real-estate-app.herokuapp.com" class="navbar-brand mr-auto">Real Estate Investing Tool</a>
-                    <!-- for local drive: -->
-                    <!-- <a href="index.html" class="navbar-brand mr-auto">Real Estate Investing Tool</a> -->
-                    <!-- button to show or hide nav items?? -->
-                    <button class= "navbar-toggler" type="button" data-toggle="collapse" 
-                    data-target="#navbarResponsive" aria-controls="navbarResponsive"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class= "navbar-toggler-icon"></span>
-                    </button>
-                    <!-- $('.dropdown-toggle').dropdown() -->
-                    <div class= "collapse navbar-collapse" id="navbarResponsive">
-                        <ul class= "navbar-nav ml-auto">
-
-                            <li class="nav-item">
-                                <!-- for heroku -->
-                                <a class="nav-link" href="https://ellenrud84-real-estate-app.herokuapp.com/apis">API List</a>
-                                <!-- for local drive -->
-                                <!-- <a class="nav-link" href="/apis">API List</a> -->
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!--finished with navbar onto page header  -->
-    <div class= "main-index">
-        <div class="row">
-            <div class = "col-lg-12">
-                <div id = "content1" class = "showData">   
-                    <h1>Neighborhoods & Parameters</h1>
-                    <!--Adrianas GeoJSON -->
-                    <div id="map" ></div> 
-                    <!-- <div id="map"style= "visibility:visible; display:block"></div>  -->
-                </div>
-            
-                <div id = "content2" class= "hideData">
-                    <div class = "bar_container">
-                        Loading ...
-                        <div class = "progress">
-                            <div class = "progress-bar progress-bar-animated active" id = progress_one role = "progressbar" aria-valuenow="0" aria-valuemin = "0" aria-valuemax="100">
-    
+        <div class= "wrapper">
+            <div class= "row">
+                <div class= "col-lg-3">
+                    <nav class="sidebar" id="mySidebar">
+                    
+                        <!-- form froup of all sliders -->
+                        <div class="form-group">
+        
+                        <!-- budget slider -->
+                        <p> <h5>Input your ranking parameters:</h5> </p>
+                        </p><h6 class= "sidebarHeader">Max. Budget</h6> </p>
+                            <div class="slidecontainer">
+                                <input id= "budget" class= "slider" type="range" step= "50000" min="0" max="1000000" value ="1000000" name="budget">  
                             </div>
-    
+                        <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: $<span id="budgetValue"></span> USD</p>   
+                        
+                        <!-- indicator of what rest of sliders mean -->
+                        <p class= "explain"><em>RANK PARAMETER IMPORTANCE BELOW:</em></p>
+                        <div class = "dropdown-divider"></div> 
+        
+                        <!-- sales weight slider -->
+                        </p><h6 class= "sidebarHeader">High Sales Frequency</h6></p>
+                            <div class="slidecontainer">
+                                <input id= "salesWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="salesWeight"> 
+                            </div>
+                        <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="salesValue"></span></p>   
+            
+                        <!-- School Ratings Slider -->
+                        </p><h6 class= "sidebarHeader">School Ratings</h6></p>
+                        <div class="slidecontainer">
+                                <input id= "schoolWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="schoolWeight">  
                         </div>
-                    </div>
-                </div>
-    
-    
-                <div id="content3"  class = "hideData">
-                  
-                    <p class="row"><h3 class= "results"> Results: Top 5 Neighborhoods Based on User Preferences</h3></p>
-                    <br>
-                    <div class = "row">
-                        <div id = 'map_hou_top_5' class="col-lg-6"></div>
-                        <div id = 'hbarPlotTopScores' class="col-lg-6"></div>
-                    </div>
+                        <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="schoolValue"></span></p>   
                     
-                    <br>
-    
-                    <div class = "row">
-                        <h5>Chart Options:</h5>
-                        <!-- <label for="parameters">Choose a parameter:</label> -->
-                        <select id="parameters" onchange="handleBarChartSubmit(this.value)">
-                        <option value="ElseCondition">Parameters:</option>
-                        <option value="SalesIndex">Sales Index</option>
-                        <option value="CrimeIndex">Crime Index</option>
-                        <option value="SchoolRating">School Rating</option>
-                        <option value="AcreageIndex">Acreage Index</option>
-                        <option value="SQFTIndex">SQFT Index</option>
-                        <option value="FloodIndex">Flood Index</option>
-                        <option value="ValueChangeIndex">Value Change Index</option>
-                        <option id = 'neighborhoods'value="Neighborhoods"></option>
-                        </select>
-                    </div>
-                    <div id = 'barPlotParameter' class='row'></div>
-                    <br>
-                    <div class= "row">
-                        <h1> Neighborhood Parameters</h1>
-                        <div id = "table" style="overflow-x:auto;"></div>
-                    </div>
+                            <!-- Crime Ratings Slider -->
+                            </p><h6 class= "sidebarHeader">Low Crime Frequency</h6></p>
+                            <div class="slidecontainer">
+                                <input id= "crimeWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="crimeWeight">  
+                            </div>
+                            <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="crimeValue"></span></p> 
+        
+                        <!-- Acreage Ratings Slider -->
+                        </p><h6 class= "sidebarHeader">High Acreage</h6></p>
+                        <div class="slidecontainer">
+                            <input id= "acreageWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="acreageWeight">  
+                        </div>
+                        <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="acreageValue"></span></p>  
+        
+                        <!-- SQFT Ratings Slider -->
+                        </p><h6 class= "sidebarHeader">High Square Footage</h6></p>
+                        <div class="slidecontainer">
+                        
+                            <input id= "sqftWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="sqftWeight">  
+                        
+                        </div>
+                        <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="sqftValue"></span></p>  
+        
+                            <!-- Flood Ratings Slider -->
+                        </p><h6 class= "sidebarHeader">Low Flood Risk</h6></p>
+                        <div class="slidecontainer">
+                            
+                            <input id= "floodWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="floodWeight">  
+                        
+                        </div>
+                        <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="floodValue"></span></p>  
+        
+                        <!-- Value Ratings Slider -->
+                        </p><h6 class= "sidebarHeader">High Annual Value Increase</h6></p>
+                        <div class="slidecontainer">
+                            
+                            <input id= "valueWeight" class= "slider" type="range" step= "1" min="1" max="10" value ="5" name="valueWeight">  
+                        
+                        </div>
+                        <p style="color:forestgreen; font-size:8pt; margin-bottom:10px"> Value: <span id="valueValue"></span></p>  
+                                
+                        <h6 id= "filter-btn" class = "button btn " onclick="load_bar()"> Submit<h6>
+                        
+                        </div>
                     
+                    </nav>
+                
                 </div>
+                <div class = "col-lg-9">
+                    <div id = "content1" class = "showData">
+                        <div class="row">
+                            <div class = "col-lg-12">
+                                <div class = Page-Header>
+                                    Check Map for School Boundaries, Flood Zones & Zip Codes Currently Available
+                                </div>   
+                            </div>
+                        </div>   
 
+                        <div class= "row" >
+                            <div class = "col-lg-12">
+                                <!--Adrianas GeoJSON -->
+                                <div id="map"></div> 
+                                <!-- <div id="map"style= "visibility:visible; display:block"></div>  -->
+                            </div>
+                        </div>  
+                    </div>
+
+                    <div id = "content2" class= "hideData">
+                        <div class= "row">
+                            <div class = "col-lg-12">
+                                <div class = "bar_container" style="z-index:1">
+                                    Loading ...
+                                    <div class = "progress">
+                                        <div class = "progress-bar progress-bar-striped active"; id = progress_one role = "progressbar" aria-valuenow="0" aria-valuemin = "0" aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                    </div>
+        
+                    <div id="content3"  class = "hideData">
+                        <!-- results title -->
+                        <div class="row">
+                            <div class = "col-lg-12">
+                                <div class= "Page-Header">
+                                    Results: Top 5 Neighborhoods Based on User Preferences
+                                </div>
+
+                            </div>
+                            
+                        </div>
+
+                        <br>
+
+                        <!-- row 1 results content -->
+                        <div class = "row">
+                            <!-- map of top 5 hoods based on user prefs -->
+                            <div class = "col-lg-6">
+                                <div class = "container myContainer">
+                                    <div class= "row">
+                                        <div class = "col-lg-12">
+                                            <h3> Neighborhood Locations:</h3>
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class = "col-lg-12">
+                                            <div class = "results_2_cols" id = 'map_hou_top_5' ></div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                
+
+                            <!-- bar chart on top 5 hood total scores -->
+                            
+                            <div class = "col-lg-6">
+                                <div class = "container myContainer">
+                                    <div class= "row">
+                                        <div class = "col-lg-12">
+                                            <h3> Neighborhood Total Score:</h3>
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class = "col-lg-12">
+                                            <div class = "results_2_cols" id = 'hbarPlotTopScores'></div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <!-- row 2 results content -- filter dropdown-->
+                    
+                        <div class = "row " >
+                            <div class = "col-lg-12">
+                                <div class = "container myContainer2" ;">
+                                    <div class= "row">
+                                        <div class = "col-lg-12">
+                                            <div class = "mydropdown">
+                                                <h3>Detailed Analysis:</h3>
+                                                <!-- <label for="parameters">Choose a parameter:</label> -->
+                                                <select id="parameters" onchange="handleBarChartSubmit(this.value)">
+                                                    <option value="ElseCondition">Parameters:</option>
+                                                    <option value="SalesIndex">Sales Index</option>
+                                                    <option value="CrimeIndex">Crime Index</option>
+                                                    <option value="SchoolRating">School Rating</option>
+                                                    <option value="AcreageIndex">Acreage Index</option>
+                                                    <option value="SQFTIndex">SQFT Index</option>
+                                                    <option value="FloodIndex">Flood Index</option>
+                                                    <option value="ValueChangeIndex">Value Change Index</option>
+                                                    <option id = 'neighborhoods'value="Neighborhoods"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class= "row">
+                                        <div class = "col-lg-12">
+                                             <!-- row 3 results content = bar chart -->
+                                            <div id = 'barPlotParameter' class="results_1_col"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>    
+                        
+                        <br>
+
+                        <!-- row 4 results content = table -->
+                        <div class= "row">
+                     
+                              
+                            <div class = "col-lg-12">
+                                <h1> Neighborhood Parameters</h1>
+                                <div id = "table" class="myTable"></div>
+                            </div>
+                                  
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
-        
-    </div>
 
-    <!-- footer elements -->
-
-    <!-- footer: ref https://mdbootstrap.com/docs/jquery/navigation/footer/#sticky-footer -->
-    
-    <footer class = "page-footer font-small fixed-bottom navbar-expand-lg" style="color:white; background-color: #212121;">
-
-        <!-- footer elements -->
-        <div class= "container">
-        
             <div class = "row">
-                <!-- social buttons -->
-                <ul class="list-unstyled list-inline text-center">
+                <div class = "col-lg-12">
+                    <!-- footer elements -->
 
-                <li class="list-inline-item">
-                    <p>Creators: Ellen Rud-Gentile, Adriana Ovalle, Jonathan Antia <!--<a href="https://personalwebsitehere">Name</a>.--></p>
-                </li>
+                    <!-- footer: ref https://mdbootstrap.com/docs/jquery/navigation/footer/#sticky-footer -->
+                    
+                    <footer class = "page-footer font-small fixed-bottom navbar-expand-lg" style="color:white; background-color: #212121;">
 
-                </ul>
+                        <!-- footer elements -->
+                        <div class= "container footer" >
+                        
+                            <div class = "row">
+                                <!-- social buttons -->
+                                <ul class="list-unstyled list-inline text-center">
+
+                                <li class="list-inline-item">
+                                    <p>Creators: Ellen Rud-Gentile, Adriana Ovalle, Jonathan Antia <!--<a href="https://personalwebsitehere">Name</a>.--></p>
+                                </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </footer>
+
+                </div>
             </div>
         </div>
-    </footer>
+        
 
-    <!-- Plotly.js -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-    <!-- d3js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-   
-    <!--jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-    <!-- bootstrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <!-- leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-    crossorigin=""></script>
-
-    <!-- API Key -->
-    <!-- <script src="{{ url_for('static', filename='../js/config.js') }}"></script> -->
-    <script src= '../static/js/config.js'></script>
-
-    <!-- Local JS Files -->
-    <!-- <script src="{{ url_for('static', filename='/js/homepageChart.js') }}"></script> -->
-    <script src= '../static/js/homepageChart.js'></script>
-
-    <!-- <script src="{{ url_for('static', filename='/js/sliders.js') }}"></script> -->
-    <script src='../static/js/sliders.js'></script>
-
-    <!-- <script src="{{ url_for('static', filename='/js/loading.js') }}"></script> -->
-    <script src='../static/js/loading.js'></script>
-
-    <!-- <script src="{{ url_for('static', filename='/js/event_listeners.js') }}"></script> -->
-    <script src='../static/js/event_listeners.js'></script>
-
+        
+            
     
 
-  </body>
+
+        
+                
+
+            
+        
+
+        <!-- Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <!-- d3js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    
+        <!--jQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- popper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+        <!-- bootstrap -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+        <!-- API Key -->
+        <!-- <script src="{{ url_for('static', filename='../js/config.js') }}"></script> -->
+        <script src= '../static/js/config.js'></script>
+
+        <!-- Local JS Files -->
+        <!-- <script src="{{ url_for('static', filename='/js/homepageChart.js') }}"></script> -->
+        <script src= '../static/js/homepageChart.js'></script>
+
+        <!-- <script src="{{ url_for('static', filename='/js/sliders.js') }}"></script> -->
+        <script src='../static/js/sliders.js'></script>
+
+        <!-- <script src="{{ url_for('static', filename='/js/loading.js') }}"></script> -->
+        <script src='../static/js/loading.js'></script>
+
+        <!-- <script src="{{ url_for('static', filename='/js/event_listeners.js') }}"></script> -->
+        <script src='../static/js/event_listeners.js'></script>
+
+        
+
+    </body>
 </html>
