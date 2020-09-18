@@ -1,7 +1,7 @@
 # Real Estate Investment Dashboard
 
 ## Project Goal
-Real Estate investment research is time consuming because of the lack of a single place to find all the information related to home value tendencies, school ratings, flood zones, crime rate and amount of transactions happening per zip code in Houston. The following dashboard responds to an investor with a ranking of neighborhoods in 9 Zip Codes in the Houston area to invest in. The ranking depends on the investor preferences in terms of budget and importance of 7 parameters: 
+Real Estate investment research is time consuming because of the lack of a single place to find all the information related to home value tendencies, school ratings, flood zones, crime rate and amount of transactions happening per zip code in Houston. The following dashboard responds to an investor with a ranking of neighborhoods in 9 Zip Codes in the Houston area to invest in. The ranking depends on the investor preferences in terms of budget and importance of 7 parameters: tolerance to crime, tolerance to risk, home sales, school ratings, acreage, % of value increase of the property and SQ-FT.
 
 ## General Workflow
 The coding approach was divided in 4 main components:
@@ -48,6 +48,8 @@ Python Flask was used for the development of the web application. 2 routes were 
 * The code further processes this data based on the users other input preferences and ranks the neighborhoods.
 * The results visualizations are triggered
 
+![Figure2](Images/Page1.png)
+
 ### Results Page
 The code outputs visualizations of the top 5 neighborhoods in the ZIP Codes available and ranked based on the user criteria.
 
@@ -62,3 +64,5 @@ The visualizations consist of:
 
 The user can also access the raw json data from the api through a multi parameter or budget route.  The accessible API routes are listed when
 the user clicks the "APIs" tag on the top navigation menu.
+
+![Figure3](Images/Page2.png)
