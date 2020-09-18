@@ -1,7 +1,7 @@
 # Real Estate Investment Dashboard
 
 ## Project Goal
-Real Estate investment research is time consuming because of the lack of a single place to find all the information related to home value tendencies, school ratings, flood zones, crime rate and amount of transactions happening per zip code in Houston. The following dashboard responds to an investor with a ranking of neighborhoods in 9 Zip Codes in the Houston area to invest in. The ranking depends on the investor preferences in terms of budget and importance of 7 parameters: 
+Real Estate investment research is time consuming because of the lack of a single place to find all the information related to home value tendencies, school ratings, flood zones, crime rate and amount of transactions happening per zip code in Houston. The following dashboard responds to an investor with a ranking of neighborhoods in 9 Zip Codes in the Houston area to invest in. The ranking depends on the investor preferences in terms of budget and importance of 7 parameters: tolerance to crime, tolerance to risk, home sales, school ratings, acreage, % of value increase of the property and SQ-FT.
 
 ## General Workflow
 The coding approach was divided in 4 main components:
@@ -46,13 +46,16 @@ Python Flask was used for the development of the web application. 2 routes were 
 * The user presses submit, which triggers the Python processing layer.
 * The code then accesses the database and pulls only the data relevant to properties less than the users selected budget.
 * The code further processes this data based on the users other input preferences and ranks the neighborhoods.
-* The results visualizations are triggered
+* The results visualizations are triggered.
+
+![Figure2](Images/Page1.png)
 
 ### Results Page
 The code outputs visualizations of the top 5 neighborhoods in the ZIP Codes available and ranked based on the user criteria.
 
-While the data is processing from the user inputs and database pull all outputs are hidden and a progress bar is shown.  The duration of the progress bar animation is
-based on average load time for the program.
+While the data is processing from the user inputs a progress bar is shown.  The duration of the progress bar animation is based on average load time for the program.
+
+Once the data is ready, the visualizations are loaded.
 
 The visualizations consist of:
 1) A map showing the top 5 nieghborhoods locations, with popups for more info about each neighborhood
@@ -62,3 +65,5 @@ The visualizations consist of:
 
 The user can also access the raw json data from the api through a multi parameter or budget route.  The accessible API routes are listed when
 the user clicks the "APIs" tag on the top navigation menu.
+
+![Figure3](Images/Page2.png)
