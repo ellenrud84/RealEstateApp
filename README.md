@@ -66,4 +66,4 @@ The visualizations consist of:
 The user can also access the raw json data from the api through a multi parameter or budget route.  The accessible API routes are listed when
 the user clicks the "APIs" tag on the top navigation menu.
 
-![Figure3](Images/Page2.png)
+![Figure3](Images/Page2.jpg)
