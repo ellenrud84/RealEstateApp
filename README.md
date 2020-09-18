@@ -48,7 +48,7 @@ Python Flask was used for the development of the web application. 2 routes were 
 * The code further processes this data based on the users other input preferences and ranks the neighborhoods.
 * The results visualizations are triggered.
 
-![Figure2](Images/Page1.png)
+![Figure2](Images/Page1.GIF)
 
 ### Results Page
 The code outputs visualizations of the top 5 neighborhoods in the ZIP Codes available and ranked based on the user criteria.
@@ -66,4 +66,4 @@ The visualizations consist of:
 The user can also access the raw json data from the api through a multi parameter or budget route.  The accessible API routes are listed when
 the user clicks the "APIs" tag on the top navigation menu.
 
-![Figure3](Images/Page2.png)
+![Figure3](Images/Page2.jpg)
