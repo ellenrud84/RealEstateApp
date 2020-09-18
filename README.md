@@ -46,15 +46,16 @@ Python Flask was used for the development of the web application. 2 routes were 
 * The user presses submit, which triggers the Python processing layer.
 * The code then accesses the database and pulls only the data relevant to properties less than the users selected budget.
 * The code further processes this data based on the users other input preferences and ranks the neighborhoods.
-* The results visualizations are triggered
+* The results visualizations are triggered.
 
 ![Figure2](Images/Page1.png)
 
 ### Results Page
 The code outputs visualizations of the top 5 neighborhoods in the ZIP Codes available and ranked based on the user criteria.
 
-While the data is processing from the user inputs and database pull all outputs are hidden and a progress bar is shown.  The duration of the progress bar animation is
-based on average load time for the program.
+While the data is processing from the user inputs a progress bar is shown.  The duration of the progress bar animation is based on average load time for the program.
+
+Once the data is ready, the visualizations are loaded.
 
 The visualizations consist of:
 1) A map showing the top 5 nieghborhoods locations, with popups for more info about each neighborhood
